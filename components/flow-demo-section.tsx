@@ -174,27 +174,27 @@ export function FlowDemoSection() {
             nodesConnectable={false}
             elementsSelectable={false}
             zoomOnScroll={false}
-            panOnScroll
+            // panOnScroll
             panOnDrag
             zoomOnPinch={false}
             minZoom={0.9}
             maxZoom={1.2}
           >
-            <Background color="#e2e8f0" gap={20} size={1} />
-            <Controls />
-            <MiniMap
+            {/* <Background color="#e2e8f0" gap={20} size={1} /> */}
+            {/* <Controls /> */}
+            {/* <MiniMap
               nodeColor={(node) => {
                 if (node.id === '1') return '#10b981';
                 if (node.id === 'report') return '#0ea5e9';
                 return '#ffffff';
               }}
               className="bg-slate-50 border border-slate-200"
-            />
+            /> */}
           </ReactFlow>
         </motion.div>
 
         {/* Benefits */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -230,7 +230,13 @@ export function FlowDemoSection() {
               Complete documentation for compliance review
             </p>
           </div>
-        </motion.div>
+        </motion.div> */}
+
+
+
+
+
+
       </div>
     </section>
   );

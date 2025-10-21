@@ -1,154 +1,236 @@
 "use client";
 
+import Section from "@/components/section";
+import { buttonVariants } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import useWindowSize from "@/lib/hooks/use-window-size";
+import { cn } from "@/lib/utils";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Check, Zap } from "lucide-react";
+import { Check } from "lucide-react";
+import Link from "next/link";
+import { useState, useRef } from "react";
+import { FaStar } from "react-icons/fa";
+import confetti from "canvas-confetti";
+import NumberFlow from "@number-flow/react";
 
-const plans = [
-  {
-    name: "Starter",
-    price: "$0",
-    period: "forever",
-    description: "Perfect for small teams getting started with security automation",
-    features: [
-      "Up to 5 workflows",
-      "10 integrations",
-      "1,000 monthly executions",
-      "Community support",
-      "Basic templates",
-      "7-day activity logs",
-    ],
-    cta: "Get Started Free",
-    popular: false,
-  },
-  {
-    name: "Professional",
-    price: "$49",
-    period: "per month",
-    description: "For growing teams that need advanced automation capabilities",
-    features: [
-      "Unlimited workflows",
-      "50+ integrations",
-      "50,000 monthly executions",
-      "Priority support",
-      "Advanced templates",
-      "30-day activity logs",
-      "Custom connectors",
-      "Team collaboration",
-    ],
-    cta: "Start Free Trial",
-    popular: true,
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    period: "contact sales",
-    description: "For organizations requiring enterprise-grade security and scale",
-    features: [
-      "Everything in Professional",
-      "Unlimited executions",
-      "Custom integrations",
-      "Dedicated support",
-      "SLA guarantees",
-      "SSO & SAML",
-      "Audit logs",
-      "On-premise deployment",
-    ],
-    cta: "Contact Sales",
-    popular: false,
-  },
-];
+export default function PricingBasic() {
+  const [isMonthly, setIsMonthly] = useState(true);
+  const { isDesktop } = useWindowSize();
+  const switchRef = useRef<HTMLButtonElement>(null);
 
-export function PricingSection() {
+  const handleToggle = (checked: boolean) => {
+    setIsMonthly(!checked);
+    if (checked && switchRef.current) {
+      const rect = switchRef.current.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      confetti({
+        particleCount: 50,
+        spread: 60,
+        origin: {
+          x: x / window.innerWidth,
+          y: y / window.innerHeight,
+        },
+        colors: [
+          "hsl(var(--primary))",
+          "hsl(var(--accent))",
+          "hsl(var(--secondary))",
+          "hsl(var(--muted))",
+        ],
+        ticks: 200,
+        gravity: 1.2,
+        decay: 0.94,
+        startVelocity: 30,
+        shapes: ["circle"],
+      });
+    }
+  };
+
   return (
-    <section id="pricing" className="py-24 bg-slate-50">
-      <div className="max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Simple, Transparent Pricing
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Choose the plan that fits your team's needs. All plans include a 14-day free trial.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-3 gap-8 items-start">
-          {plans.map((plan, index) => (
-            <motion.div
-              key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -8, transition: { duration: 0.3 } }}
-              className={`relative bg-white rounded-2xl p-8 ${
-                plan.popular
-                  ? "border-2 border-sky-500 shadow-2xl shadow-sky-200/50"
-                  : "border border-slate-200 shadow-lg"
-              }`}
-            >
-              {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <div className="bg-sky-600 text-white px-4 py-1 rounded-full text-sm font-semibold flex items-center gap-2">
-                    <Zap className="w-4 h-4" />
-                    Most Popular
-                  </div>
-                </div>
-              )}
-
-              <div className="mb-6">
-                <h3 className="text-2xl font-bold text-slate-900 mb-2">{plan.name}</h3>
-                <p className="text-sm text-slate-600 mb-4">{plan.description}</p>
-                <div className="flex items-baseline gap-2">
-                  <span className="text-5xl font-bold text-slate-900">{plan.price}</span>
-                  <span className="text-slate-600">/ {plan.period}</span>
-                </div>
-              </div>
-
-              <Button
-                className={`w-full mb-6 ${
-                  plan.popular
-                    ? "bg-sky-600 hover:bg-sky-700 text-white"
-                    : "bg-slate-100 hover:bg-slate-200 text-slate-900"
-                }`}
-                size="lg"
-              >
-                {plan.cta}
-              </Button>
-
-              <div className="space-y-3">
-                {plan.features.map((feature) => (
-                  <div key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-sky-600 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-700">{feature}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <p className="text-slate-600 mb-4">
-            All plans include 14-day free trial. No credit card required.
-          </p>
-          <a href="#" className="text-sky-600 hover:text-sky-700 font-medium">
-            Compare all features →
-          </a>
-        </motion.div>
+    <Section>
+      <div className="text-center space-y-4 mb-12">
+        <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
+          Simple, Transparent Pricing
+        </h2>
+        <p className="text-muted-foreground text-lg">
+          Choose the plan that works for you
+          <br />
+          All plans include access to our platform, lead generation tools, and
+          dedicated support.
+        </p>
       </div>
-    </section>
+
+      <div className="flex justify-center mb-10">
+        <label className="relative inline-flex items-center cursor-pointer">
+          <Label>
+            <Switch
+              ref={switchRef}
+              checked={!isMonthly}
+              onCheckedChange={handleToggle}
+              className="relative"
+            />
+          </Label>
+        </label>
+        <span className="ml-2 font-semibold">
+          Annual billing <span className="text-primary">(Save 20%)</span>
+        </span>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 sm:2 gap-4">
+        {[
+          {
+            name: "STARTER",
+            price: "50",
+            yearlyPrice: "40",
+            period: "per month",
+            features: [
+              "Up to 10 projects",
+              "Basic analytics",
+              "48-hour support response time",
+              "Limited API access",
+              "Community support",
+            ],
+            description: "Perfect for individuals and small projects",
+            buttonText: "Start Free Trial",
+            href: "/sign-up",
+            isPopular: false,
+          },
+          {
+            name: "PROFESSIONAL",
+            price: "99",
+            yearlyPrice: "79",
+            period: "per month",
+            features: [
+              "Unlimited projects",
+              "Advanced analytics",
+              "24-hour support response time",
+              "Full API access",
+              "Priority support",
+              "Team collaboration",
+              "Custom integrations",
+            ],
+            description: "Ideal for growing teams and businesses",
+            buttonText: "Get Started",
+            href: "/sign-up",
+            isPopular: true,
+          },
+          {
+            name: "ENTERPRISE",
+            price: "299",
+            yearlyPrice: "239",
+            period: "per month",
+            features: [
+              "Everything in Professional",
+              "Custom solutions",
+              "Dedicated account manager",
+              "1-hour support response time",
+              "SSO Authentication",
+              "Advanced security",
+              "Custom contracts",
+              "SLA agreement",
+            ],
+            description: "For large organizations with specific needs",
+            buttonText: "Contact Sales",
+            href: "/contact",
+            isPopular: false,
+          },
+        ].map((plan, index) => (
+          <motion.div
+            key={index}
+            initial={{ y: 50, opacity: 1 }}
+            whileInView={
+              isDesktop
+                ? {
+                    y: plan.isPopular ? -20 : 0,
+                    opacity: 1,
+                    x: index === 2 ? -30 : index === 0 ? 30 : 0,
+                    scale: index === 0 || index === 2 ? 0.94 : 1.0,
+                  }
+                : {}
+            }
+            viewport={{ once: true }}
+            transition={{
+              duration: 1.6,
+              type: "spring",
+              stiffness: 100,
+              damping: 30,
+              delay: 0.4,
+              opacity: { duration: 0.5 },
+            }}
+            className={cn(
+              `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
+              plan.isPopular ? "border-primary border-2" : "border-border",
+              "flex flex-col",
+              !plan.isPopular && "mt-5",
+              index === 0 || index === 2
+                ? "z-0 transform translate-x-0 translate-y-0 -translate-z-[50px] rotate-y-[10deg]"
+                : "z-10",
+              index === 0 && "origin-right",
+              index === 2 && "origin-left"
+            )}
+          >
+            {plan.isPopular && (
+              <div className="absolute top-0 right-0 bg-primary py-0.5 px-2 rounded-bl-xl rounded-tr-xl flex items-center">
+                <FaStar className="text-primary-foreground" />
+                <span className="text-primary-foreground ml-1 font-sans font-semibold">
+                  Popular
+                </span>
+              </div>
+            )}
+            <div className="flex-1 flex flex-col">
+              <p className="text-base font-semibold text-muted-foreground">
+                {plan.name}
+              </p>
+              <div className="mt-6 flex items-center justify-center gap-x-2">
+                <span className="text-5xl font-bold tracking-tight text-foreground">
+                  ${isMonthly ? plan.price : plan.yearlyPrice}
+                </span>
+                {plan.period !== "Next 3 months" && (
+                  <span className="text-sm font-semibold leading-6 tracking-wide text-muted-foreground">
+                    / {plan.period}
+                  </span>
+                )}
+              </div>
+
+              <p className="text-xs leading-5 text-muted-foreground">
+                {isMonthly ? "billed monthly" : "billed annually"}
+              </p>
+
+              <ul className="mt-5 gap-2 flex flex-col">
+                {plan.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <Check className="mr-2 h-4 w-4 text-primary" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <hr className="w-full my-4" />
+
+              <Link
+                href={plan.href}
+                className={cn(
+                  buttonVariants({
+                    variant: "outline",
+                  }),
+                  "group relative w-full gap-2 overflow-hidden text-lg font-semibold tracking-tighter",
+                  "transform-gpu ring-offset-current transition-all duration-300 ease-out hover:ring-2 hover:ring-primary hover:ring-offset-1 hover:bg-primary hover:text-primary-foreground",
+                  plan.isPopular
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-background text-foreground"
+                )}
+              >
+                {plan.buttonText}
+              </Link>
+              <p className="mt-6 text-xs leading-5 text-muted-foreground">
+                {plan.description}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </Section>
   );
 }
