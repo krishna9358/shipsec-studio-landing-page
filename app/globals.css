@@ -4,57 +4,110 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
+    /* Cybersecurity-inspired light theme */
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
+    --card-foreground: 222 47% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 222 47% 11%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 199 89% 48%;
+    --accent-foreground: 222 47% 11%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 222 47% 11%;
+    /* Distinctive chart colors */
+    --chart-1: 199 89% 48%;  /* Cyber blue */
+    --chart-2: 280 65% 60%;  /* Electric purple */
+    --chart-3: 333 71% 51%;  /* Security red */
+    --chart-4: 150 60% 45%;  /* Matrix green */
+    --chart-5: 43 96% 58%;   /* Warning amber */
     --radius: 0.5rem;
   }
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    /* Matrix-inspired dark theme */
+    --background: 220 40% 8%;
+    --foreground: 150 60% 50%;  /* Matrix green text */
+    --card: 220 40% 10%;
+    --card-foreground: 150 60% 50%;
+    --popover: 220 40% 10%;
+    --popover-foreground: 150 60% 50%;
+    --primary: 150 60% 50%;  /* Matrix green primary */
+    --primary-foreground: 220 40% 8%;
+    --secondary: 220 40% 12%;
+    --secondary-foreground: 150 60% 50%;
+    --muted: 220 40% 12%;
+    --muted-foreground: 150 40% 40%;
+    --accent: 199 89% 48%;  /* Cyber blue accent */
+    --accent-foreground: 150 60% 50%;
+    --destructive: 333 81% 61%;  /* Bright red */
+    --destructive-foreground: 220 40% 8%;
+    --border: 220 40% 16%;
+    --input: 220 40% 16%;
+    --ring: 150 60% 50%;
+    /* Neon-inspired chart colors */
+    --chart-1: 199 89% 58%;  /* Cyber blue */
+    --chart-2: 280 75% 65%;  /* Electric purple */
+    --chart-3: 333 81% 61%;  /* Neon red */
+    --chart-4: 150 70% 55%;  /* Matrix green */
+    --chart-5: 43 96% 68%;   /* Warning amber */
+  }
+
+  .dark ::selection {
+    background: hsl(150 60% 50% / 0.2);
+    color: hsl(150 60% 50%);
+  }
+
+  .dark .grid-background {
+    background-image:
+      linear-gradient(to right, hsl(150 60% 50% / 0.1) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(150 60% 50% / 0.1) 1px, transparent 1px);
+  }
+
+  .dark .flow-animation {
+    background: 
+      radial-gradient(circle at 20% 50%, hsl(199 89% 58% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, hsl(150 70% 55% / 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 40% 20%, hsl(280 75% 65% / 0.15) 0%, transparent 50%);
+  }
+
+  .dark .prose {
+    color: hsl(150 40% 70%);
+  }
+
+  .dark .prose h1,
+  .dark .prose h2,
+  .dark .prose h3 {
+    color: hsl(150 60% 50%);
+  }
+
+  .dark .prose a {
+    color: hsl(199 89% 58%);
+  }
+
+  .dark .prose a:hover {
+    color: hsl(199 89% 68%);
+  }
+
+  .dark .prose code {
+    color: hsl(150 60% 50%);
+    background: hsl(220 40% 12%);
+  }
+
+  .dark .prose pre {
+    background: hsl(220 40% 12%);
+    color: hsl(150 60% 50%);
+  }
+  .theme {
+    --animate-orbit: orbit calc(var(--duration)*1s) linear infinite;
   }
 }
 
@@ -62,47 +115,188 @@
   * {
     @apply border-border;
   }
-  
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: var(--font-ibm-plex-sans), system-ui, -apple-system, sans-serif;
+    @apply bg-background text-foreground;
+    font-family: var(--font-open-sans), 'Open Sans', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    line-height: 1.1;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  h2 {
+    font-size: 2.25rem;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: 1.875rem;
+    margin-top: 1.5rem;
+  }
+
+  p, li, input, textarea {
+    font-family: var(--font-open-sans), 'Open Sans', system-ui, sans-serif;
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  strong, b {
+    font-weight: 600;
+    color: hsl(var(--primary));
+  }
+
+  code, pre {
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    font-feature-settings: "liga" 0;
   }
 }
 
+/* Cybersecurity-themed grid background */
 .grid-background {
   background-image:
-    linear-gradient(to right, rgb(226 232 240 / 0.3) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(226 232 240 / 0.3) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, hsl(var(--accent) / 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--accent) / 0.1) 1px, transparent 1px);
+  background-size: 32px 32px;
+  position: relative;
+  overflow: hidden;
 }
 
+.grid-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    repeating-linear-gradient(
+      -45deg,
+      hsl(var(--accent) / 0.03),
+      hsl(var(--accent) / 0.03) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  animation: scan-lines 10s linear infinite;
+}
+
+/* Matrix-inspired flow animation */
 .flow-animation {
-  background: radial-gradient(circle at 20% 50%, rgba(56, 189, 248, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 80% 80%, rgba(167, 243, 208, 0.1) 0%, transparent 50%),
-              radial-gradient(circle at 40% 20%, rgba(147, 197, 253, 0.1) 0%, transparent 50%);
+  background: 
+    radial-gradient(circle at 20% 50%, hsl(var(--chart-1) / 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, hsl(var(--chart-4) / 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 40% 20%, hsl(var(--chart-2) / 0.15) 0%, transparent 50%);
+  position: relative;
 }
 
+.flow-animation::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(
+      90deg, 
+      transparent,
+      hsl(var(--accent) / 0.1),
+      transparent
+    );
+  animation: cyber-pulse 3s ease-in-out infinite;
+}
+
+/* Enhanced blob animation */
 @keyframes blob {
   0% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
   }
   33% {
-    transform: translate(30px, -50px) scale(1.1);
+    transform: translate(30px, -50px) scale(1.1) rotate(120deg);
   }
   66% {
-    transform: translate(-20px, 20px) scale(0.9);
+    transform: translate(-20px, 20px) scale(0.9) rotate(240deg);
   }
   100% {
-    transform: translate(0px, 0px) scale(1);
+    transform: translate(0px, 0px) scale(1) rotate(360deg);
   }
+}
+
+/* Scan lines animation */
+@keyframes scan-lines {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 100%;
+  }
+}
+
+/* Cyber pulse animation */
+@keyframes cyber-pulse {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+/* Page transition animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.3s ease-out forwards;
 }
 
 .animate-blob {
-  animation: blob 7s infinite;
+  animation: blob 10s infinite;
+  filter: blur(5px);
 }
 
 .animation-delay-2000 {
@@ -113,110 +307,171 @@
   animation-delay: 4s;
 }
 
+/* Enhanced dot patterns */
 .bg-dot-black\/\[0\.2\] {
-  background-image: radial-gradient(rgb(0 0 0 / 0.2) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: 
+    radial-gradient(
+      hsl(var(--foreground) / 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      45deg,
+      transparent 0%,
+      hsl(var(--accent) / 0.05) 50%,
+      transparent 100%
+    );
+  background-size: 32px 32px, 200% 200%;
+  animation: gradient-shift 15s ease infinite;
 }
 
 .bg-dot-white\/\[0\.2\] {
-  background-image: radial-gradient(rgb(255 255 255 / 0.2) 1px, transparent 1px);
-  background-size: 40px 40px;
+  background-image: 
+    radial-gradient(
+      hsl(var(--foreground) / 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      -45deg,
+      transparent 0%,
+      hsl(var(--accent) / 0.05) 50%,
+      transparent 100%
+    );
+  background-size: 32px 32px, 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 0%, 0% 0%;
+  }
+  50% {
+    background-position: 0% 0%, 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%, 0% 0%;
+  }
 }
 
 .prose {
-  color: rgb(51 65 85);
-  max-width: 65ch;
+  color: hsl(var(--foreground));
+  max-width: 70ch;
+  font-size: 1.125rem;
 }
 
 .prose h1 {
-  color: rgb(15 23 42);
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
   font-weight: 800;
-  font-size: 2.25em;
+  font-size: 2.5em;
   margin-top: 0;
-  margin-bottom: 0.8888889em;
-  line-height: 1.1111111;
+  margin-bottom: 1em;
+  line-height: 1.1;
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .prose h2 {
-  color: rgb(15 23 42);
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 1.5em;
+  font-size: 1.75em;
   margin-top: 2em;
   margin-bottom: 1em;
-  line-height: 1.3333333;
+  line-height: 1.2;
+  color: hsl(var(--primary));
 }
 
 .prose h3 {
-  color: rgb(15 23 42);
+  font-family: var(--font-space-grotesk), 'Space Grotesk', system-ui, sans-serif;
   font-weight: 600;
-  font-size: 1.25em;
+  font-size: 1.5em;
   margin-top: 1.6em;
-  margin-bottom: 0.6em;
-  line-height: 1.6;
+  margin-bottom: 0.8em;
+  line-height: 1.3;
+  color: hsl(var(--primary));
 }
 
 .prose p {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   line-height: 1.75;
+  font-family: var(--font-open-sans), 'Open Sans', system-ui, sans-serif;
 }
 
 .prose a {
-  color: rgb(16 185 129);
-  text-decoration: underline;
+  color: hsl(var(--accent));
+  text-decoration: none;
   font-weight: 500;
+  background: linear-gradient(to right, hsl(var(--accent)), hsl(var(--accent)));
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: all 0.2s ease-in-out;
 }
 
 .prose a:hover {
-  color: rgb(5 150 105);
+  color: hsl(var(--accent));
+  background-size: 100% 100%;
+  color: hsl(var(--background));
 }
 
 .prose strong {
-  color: rgb(15 23 42);
+  color: hsl(var(--primary));
   font-weight: 600;
 }
 
 .prose ul,
 .prose ol {
-  margin-top: 1.25em;
-  margin-bottom: 1.25em;
+  margin: 1.5em 0;
   padding-left: 1.625em;
+  font-family: var(--font-open-sans), 'Open Sans', system-ui, sans-serif;
 }
 
 .prose li {
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
+  margin: 0.5em 0;
+  padding-left: 0.375em;
 }
 
 .prose code {
-  color: rgb(15 23 42);
-  font-weight: 600;
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  font-weight: 500;
   font-size: 0.875em;
-  background-color: rgb(241 245 249);
+  background-color: hsl(var(--accent) / 0.1);
+  color: hsl(var(--accent));
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
 }
 
 .prose pre {
-  background-color: rgb(15 23 42);
-  color: rgb(226 232 240);
+  background-color: hsl(var(--primary) / 0.95);
+  color: hsl(var(--primary-foreground));
   overflow-x: auto;
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
   font-size: 0.875em;
   line-height: 1.7142857;
-  margin-top: 1.7142857em;
-  margin-bottom: 1.7142857em;
-  border-radius: 0.5rem;
-  padding: 1.142857em 1.714285em;
+  margin: 1.7142857em 0;
+  border-radius: 0.75rem;
+  padding: 1.25em 1.5em;
 }
 
 .prose blockquote {
   font-weight: 500;
   font-style: italic;
-  color: rgb(15 23 42);
-  border-left-width: 0.25rem;
-  border-left-color: rgb(226 232 240);
-  quotes: '\201C''\201D''\2018''\2019';
-  margin-top: 1.6em;
-  margin-bottom: 1.6em;
-  padding-left: 1em;
+  color: hsl(var(--primary));
+  border-left: 4px solid hsl(var(--accent));
+  margin: 2em 0;
+  padding: 0.5em 0 0.5em 1em;
+  background: hsl(var(--accent) / 0.1);
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+@theme inline {
+  @keyframes orbit {
+  0% {
+    transform: rotate(calc(var(--angle) * 1deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg));
+    }
+  100% {
+    transform: rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg));
+    }
+  }
 }

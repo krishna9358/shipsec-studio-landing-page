@@ -12,6 +12,7 @@ import ReactFlow, {
   MarkerType,
 } from "reactflow";
 import "reactflow/dist/style.css";
+import { HeroVideoDialog } from "./ui/hero-video-dialog";
 
 // Define MessageSquare component before it's used
 const MessageSquare = ({ className }: { className?: string }) => (
@@ -151,20 +152,35 @@ export function FlowDemoSection() {
           <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
             See how ShipSecAI automatically revokes access across your entire security stack in seconds.
           </p>
-          <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white group">
+          {/* <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white group">
             <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
             Watch Demo
-          </Button>
+          </Button> */}
         </motion.div>
-
-        <motion.div
+        <div className="relative">
+      <HeroVideoDialog
+        className="block dark:hidden"
+        animationStyle="from-center"
+        videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+        thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
+        thumbnailAlt="Hero Video"
+      />
+      <HeroVideoDialog
+        className="hidden dark:block"
+        animationStyle="from-center"
+        videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
+        thumbnailSrc="https://startup-template-sage.vercel.app/hero-dark.png"
+        thumbnailAlt="Hero Video"
+      />
+    </div>
+        {/* <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="h-[600px] bg-white rounded-3xl border-2 border-slate-200 shadow-2xl overflow-hidden"
-        >
-          <ReactFlow
+        > */}
+          {/* <ReactFlow
             nodes={initialNodes}
             edges={initialEdges}
             fitView
@@ -179,7 +195,7 @@ export function FlowDemoSection() {
             zoomOnPinch={false}
             minZoom={0.9}
             maxZoom={1.2}
-          >
+          > */}
             {/* <Background color="#e2e8f0" gap={20} size={1} /> */}
             {/* <Controls /> */}
             {/* <MiniMap
@@ -190,8 +206,8 @@ export function FlowDemoSection() {
               }}
               className="bg-slate-50 border border-slate-200"
             /> */}
-          </ReactFlow>
-        </motion.div>
+          {/* </ReactFlow>
+        </motion.div> */}
 
         {/* Benefits */}
         {/* <motion.div

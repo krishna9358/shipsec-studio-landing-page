@@ -12,7 +12,7 @@ import { Footer } from "@/components/footer";
 import Spline from '@splinetool/react-spline/next';
 import TestingArrow from "@/components/testing-arrow";
 import { BenefitsGridSection } from "@/components/benefits-grid-section";
-import { BentoGridSecondDemo } from "@/components/testing";
+import { BentoGridSecondDemo } from "@/components/features";
 
 export default function Home() {
   return (

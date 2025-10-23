@@ -14,8 +14,6 @@ import {
   MobileNavMenu,
 } from "@/components/ui/resizable-navbar";
 import { Button } from "@/components/ui/button";
-import { Github } from "lucide-react";
-
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -48,12 +46,6 @@ export function Navbar() {
           <NavItems items={navItems} visible={visible} />
         </div>
         <div className="flex items-center gap-3">
-          <a href="https://github.com/shipsecai" target="_blank" rel="noopener noreferrer">
-            <Button variant="ghost" size="sm" className="hidden sm:flex items-center gap-2">
-              <Github className="w-4 h-4" />
-              GitHub
-            </Button>
-          </a>
           <NavbarButton variant="primary" href="#pricing">Get Started</NavbarButton>
         </div>
       </NavBody>
@@ -83,16 +75,6 @@ export function Navbar() {
             </a>
           ))}
           <div className="flex w-full flex-col gap-3 pt-4">
-            <a href="https://github.com/shipsecai" target="_blank" rel="noopener noreferrer" className="w-full">
-              <NavbarButton
-                onClick={() => setIsMobileMenuOpen(false)}
-                variant="secondary"
-                className="w-full"
-              >
-                <Github className="w-4 h-4 mr-2" />
-                GitHub
-              </NavbarButton>
-            </a>
             <NavbarButton
               onClick={() => setIsMobileMenuOpen(false)}
               variant="primary"

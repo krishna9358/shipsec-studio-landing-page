@@ -8,6 +8,10 @@ import {
   IconTableColumn,
 } from "@tabler/icons-react";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
+import { OrbitingCircles } from "./ui/orbiting-circles";
+import { OrbitingCirclesDemo } from "./orbitalCircleDemo";
+import { AnimatedListDemo } from "./animated-list-demo";
+import { AnimatedBeamMultipleOutputDemo } from "./animated-beam-demo";
 
 export function BentoGridSecondDemo() {
   return (
@@ -27,7 +31,7 @@ export function BentoGridSecondDemo() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl font-bold mb-4"
           >
-          Making Engineers 10x faster
+          Powerful Features for Modern Development
         </motion.h2>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -35,8 +39,8 @@ export function BentoGridSecondDemo() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-xl text-neutral-600 dark:text-neutral-300"
           >
-          We empower developers and technical teams to create, simulate, and
-          manage AI-driven workflows visually
+          Explore our comprehensive suite of tools designed to enhance your
+          development workflow and boost productivity
         </motion.p>
       </div>
     <BentoGrid className="max-w-7xl mx-auto md:auto-rows-[20rem]">
@@ -62,21 +66,22 @@ const items = [
   {
     title: "The Dawn of Innovation",
     description: "Explore the birth of groundbreaking ideas and inventions.",
-    header: <Skeleton />,
+    header: "saf",
     className: "md:col-span-2",
     icon: <IconClipboardCopy className="h-4 w-4 text-neutral-500" />,
+
   },
   {
     title: "The Digital Revolution",
     description: "Dive into the transformative power of technology.",
-    header: <Skeleton />,
+    header: <AnimatedListDemo/>,
     className: "md:col-span-1",
     icon: <IconFileBroken className="h-4 w-4 text-neutral-500" />,
   },
   {
     title: "The Art of Design",
     description: "Discover the beauty of thoughtful and functional design.",
-    header: <Skeleton />,
+    header: <AnimatedBeamMultipleOutputDemo/>,
     className: "md:col-span-1",
     icon: <IconSignature className="h-4 w-4 text-neutral-500" />,
   },
@@ -84,7 +89,7 @@ const items = [
     title: "The Power of Communication",
     description:
       "Understand the impact of effective communication in our lives.",
-    header: <Skeleton />,
+    header: <AnimatedBeamMultipleOutputDemo/>,
     className: "md:col-span-2",
     icon: <IconTableColumn className="h-4 w-4 text-neutral-500" />,
   },

@@ -121,8 +121,8 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
     <motion.div
       onMouseLeave={() => setHovered(null)}
       animate={{
-        opacity: visible ? 0 : 1,
-        pointerEvents: visible ? 'none' : 'auto',
+        opacity: 1,
+        pointerEvents: 'auto'
       }}
       transition={{ duration: 0.2 }}
       className={cn(

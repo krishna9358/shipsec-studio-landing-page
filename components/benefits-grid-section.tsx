@@ -10,6 +10,7 @@ import {
   IconScale,
   IconRobot,
 } from "@tabler/icons-react";
+import Image from "next/image";
 
 const Skeleton = () => (
   <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black"></div>
@@ -97,7 +98,7 @@ export function BenefitsGridSection() {
         </motion.p>
       </div>
 
-      <BentoGrid className="max-w-7xl mx-auto md:auto-rows-[20rem]">
+      {/* <BentoGrid className="max-w-7xl mx-auto md:auto-rows-[20rem]">
         {items.map((item, i) => (
           <motion.div
             key={i}
@@ -114,7 +115,8 @@ export function BenefitsGridSection() {
             />
           </motion.div>
         ))}
-      </BentoGrid>
+      </BentoGrid> */}
+      <Image src="/flow.png" width={1450} height={1100} alt="ptanhi" />
     </section>
   );
 }
