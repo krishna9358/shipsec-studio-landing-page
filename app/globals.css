@@ -113,6 +113,16 @@
   animation-delay: 4s;
 }
 
+.bg-dot-black\/\[0\.2\] {
+  background-image: radial-gradient(rgb(0 0 0 / 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.bg-dot-white\/\[0\.2\] {
+  background-image: radial-gradient(rgb(255 255 255 / 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 .prose {
   color: rgb(51 65 85);
   max-width: 65ch;

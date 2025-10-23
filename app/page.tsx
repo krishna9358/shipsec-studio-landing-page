@@ -11,6 +11,8 @@ import { CEOQuoteSection } from "@/components/ceo-quote-section";
 import { Footer } from "@/components/footer";
 import Spline from '@splinetool/react-spline/next';
 import TestingArrow from "@/components/testing-arrow";
+import { BenefitsGridSection } from "@/components/benefits-grid-section";
+import { BentoGridSecondDemo } from "@/components/testing";
 
 export default function Home() {
   return (
@@ -32,7 +34,12 @@ export default function Home() {
       {/* <TestingArrow/> */}
       <IntegrationsSection />
       <FlowDemoSection />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
+      <div className="mt-20"> </div>
+
+      <BentoGridSecondDemo/>
+      <div className="mt-20"> </div>
+      <BenefitsGridSection />
       <FoundersSection />
       <PricingSection />
       <CEOQuoteSection />

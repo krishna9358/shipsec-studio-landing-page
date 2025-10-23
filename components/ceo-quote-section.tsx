@@ -19,14 +19,14 @@ export function CEOQuoteSection() {
           <Quote className="w-16 h-16 text-emerald-400 mx-auto mb-8 opacity-50" />
 
           <p className="text-3xl md:text-4xl font-medium text-white leading-relaxed mb-12 max-w-4xl mx-auto">
-            "ShipSecAI has completely transformed the way we iterate and deploy security workflows. The no-code approach makes security automation accessible to everyone."
+            "I've lived the pain. That's why we built ShipSec - to solve real security problems for real developers."
           </p>
 
           <div className="flex flex-col items-center gap-6">
             <div className="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-sky-500 p-1">
               <div className="w-full h-full rounded-full overflow-hidden bg-slate-800">
                 <img
-                  src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                  src="/image-aseem.webp"
                   alt="Brendon Geils"
                   className="w-full h-full object-cover"
                 />
@@ -34,12 +34,12 @@ export function CEOQuoteSection() {
             </div>
 
             <div className="text-center">
-              <p className="text-xl font-bold text-white mb-1">Brendon Geils</p>
-              <p className="text-slate-400 mb-4">CEO, Athena Intelligence</p>
+              <p className="text-xl font-bold text-white mb-1">Aseem Shrey</p>
+              <p className="text-slate-400 mb-4">CEO, Shipsec AI</p>
 
               <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-full">
                 <Building2 className="w-5 h-5 text-emerald-400" />
-                <span className="text-white font-medium">Athena Intelligence</span>
+                <span className="text-white font-medium">Shipsec AI</span>
               </div>
             </div>
           </div>
