@@ -15,7 +15,7 @@ export interface BlogPost {
   content: string;
 }
 
-export function getAllPosts(): BlogPost[] {
+export async function getAllPosts(): Promise<BlogPost[]> {
   if (!fs.existsSync(postsDirectory)) {
     return [];
   }
@@ -50,7 +50,7 @@ export function getAllPosts(): BlogPost[] {
   });
 }
 
-export function getPostBySlug(slug: string): BlogPost | null {
+export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -71,11 +71,11 @@ export function getPostBySlug(slug: string): BlogPost | null {
   }
 }
 
-export function getAdjacentPosts(slug: string): {
+export async function getAdjacentPosts(slug: string): Promise<{
   previous: BlogPost | null;
   next: BlogPost | null;
-} {
-  const allPosts = getAllPosts();
+}> {
+  const allPosts = await getAllPosts();
   const currentIndex = allPosts.findIndex((post) => post.slug === slug);
 
   return {

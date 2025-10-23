@@ -1,4 +1,5 @@
 import { getAllPosts, getPostBySlug, getAdjacentPosts } from '@/lib/blog';
+import { use } from 'react';
 import { Navbar } from '@/components/navbar';
 import { Footer } from '@/components/footer';
 import { BlogComments } from '@/components/blog-comments';
@@ -7,15 +8,16 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { BlogPostClient } from './blog-post-client';
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = await getAllPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
-  const { previous, next } = getAdjacentPosts(params.slug);
+  const resolvedParams = use(Promise.resolve(params));
+  const post = use(getPostBySlug(resolvedParams.slug));
+  const { previous, next } = use(getAdjacentPosts(resolvedParams.slug));
 
   if (!post) {
     return (
