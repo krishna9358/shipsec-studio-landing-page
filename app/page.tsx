@@ -17,8 +17,10 @@ import { BentoGridSecondDemo } from "@/components/features";
 export default function Home() {
   return (
     <main className="min-h-screen bg-white">
+     
       <Navbar />
       <HeroSection />
+      
       {/* <Spline
         scene="https://prod.spline.design/sTZ2eJMYsVCfanxG/scene.splinecode" 
       />
@@ -39,8 +41,8 @@ export default function Home() {
 
       <BentoGridSecondDemo/>
       <div className="mt-20"> </div>
-      <BenefitsGridSection />
-      <FoundersSection />
+      {/* <BenefitsGridSection /> */}
+      {/* <FoundersSection /> */}
       <PricingSection />
       <CEOQuoteSection />
       <Footer />

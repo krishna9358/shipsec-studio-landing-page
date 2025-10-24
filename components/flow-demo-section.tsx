@@ -76,9 +76,7 @@ const FlowCardNode = ({ data }: NodeProps<FlowCardData>) => {
       initial={false}
       animate={{
         scale: isActive ? 1.04 : 1,
-        boxShadow: isActive
-          ? "0 24px 70px rgba(14, 165, 233, 0.25)"
-          : "0 18px 55px rgba(15, 23, 42, 0.10)",
+        
       }}
       transition={{ type: "spring", stiffness: 230, damping: 22 }}
       className="relative w-[270px] rounded-3xl border-2 bg-white p-6"
@@ -361,7 +359,7 @@ export function FlowDemoSection() {
             transition={{ delay: 0.1, duration: 0.6 }}
             className="space-y-10"
           >
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 ">
               <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
                 Live walkthrough
               </span>
@@ -423,7 +421,7 @@ export function FlowDemoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="relative rounded-[40px] border border-slate-100 bg-white p-6 shadow-[0_32px_90px_rgba(15,23,42,0.12)]"
+            className="relative rounded-[40px] border border-slate-100 bg-white p-6 "
           >
             <div className="pointer-events-none absolute inset-0 rounded-[32px] border border-slate-100/80" />
             <div className="h-[520px] w-full">

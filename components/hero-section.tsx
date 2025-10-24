@@ -21,7 +21,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-8xl mx-auto px-6 py-24 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-2 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center sm:items-start justify-start gap-4"
             >
-              <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 h-12 text-base">
+              <Button size="lg" className="bg-blue-500 hover:bg-blue-800 text-white px-8 h-12 text-base">
                 Get Started for Free
               </Button>
               <Button size="lg" variant="outline" className="border-slate-700 text-slate-700 hover:bg-slate-800 hover:text-white px-8 h-12 text-base group">
