@@ -1,259 +1,459 @@
 "use client";
 
+import type { ReactNode } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { Users, Shield, Github, FileText, ArrowRight, Play } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import ReactFlow, {
-  Node,
-  Edge,
   Background,
-  Controls,
-  MiniMap,
+  Edge,
+  Handle,
   MarkerType,
+  Node,
+  NodeProps,
+  Position,
+  useEdgesState,
+  useNodesState,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { HeroVideoDialog } from "./ui/hero-video-dialog";
+import { ArrowRight, Save, Search, Sparkles, Upload } from "lucide-react";
 
-// Define MessageSquare component before it's used
-const MessageSquare = ({ className }: { className?: string }) => (
-  <svg className={className} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-  </svg>
-);
+type FlowCardField = {
+  label: string;
+  value: string;
+  accent?: boolean;
+};
 
-const initialNodes: Node[] = [
-  {
-    id: "1",
-    type: "input",
-    data: {
-      label: (
-        <div className="flex flex-col items-center gap-2 px-4 py-3">
-          <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-sky-500 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold">SS</span>
-          </div>
-          <span className="font-semibold text-sm">ShipSecAI Studio</span>
-        </div>
-      )
-    },
-    position: { x: 50, y: 200 },
-    className: "px-2 py-2 shadow-lg rounded-xl border-2 border-emerald-500 bg-white",
-  },
-  {
-    id: "slack",
-    data: {
-      label: (
-        <div className="flex items-center gap-2 px-3 py-2">
-          <MessageSquare className="w-5 h-5 text-purple-600" />
-          <span className="font-medium text-sm">Slack</span>
-        </div>
-      )
-    },
-    position: { x: 300, y: 50 },
-    className: "shadow-md rounded-lg border border-purple-200 bg-purple-50",
-  },
-  {
-    id: "github",
-    data: {
-      label: (
-        <div className="flex items-center gap-2 px-3 py-2">
-          <Github className="w-5 h-5 text-slate-800" />
-          <span className="font-medium text-sm">GitHub</span>
-        </div>
-      )
-    },
-    position: { x: 300, y: 140 },
-    className: "shadow-md rounded-lg border border-slate-300 bg-slate-50",
-  },
-  {
-    id: "google",
-    data: {
-      label: (
-        <div className="flex items-center gap-2 px-3 py-2">
-          <Shield className="w-5 h-5 text-blue-600" />
-          <span className="font-medium text-sm">Google</span>
-        </div>
-      )
-    },
-    position: { x: 300, y: 230 },
-    className: "shadow-md rounded-lg border border-blue-200 bg-blue-50",
-  },
-  {
-    id: "user1",
-    data: { label: <div className="text-xs px-2 py-1">👤 User 1</div> },
-    position: { x: 550, y: 30 },
-    className: "shadow-sm rounded-md border border-slate-200 bg-white text-xs",
-  },
-  {
-    id: "user2",
-    data: { label: <div className="text-xs px-2 py-1">👤 User 2</div> },
-    position: { x: 550, y: 100 },
-    className: "shadow-sm rounded-md border border-slate-200 bg-white text-xs",
-  },
-  {
-    id: "user3",
-    data: { label: <div className="text-xs px-2 py-1">👤 User 3</div> },
-    position: { x: 550, y: 170 },
-    className: "shadow-sm rounded-md border border-slate-200 bg-white text-xs",
-  },
-  {
-    id: "user4",
-    data: { label: <div className="text-xs px-2 py-1">👤 User 4</div> },
-    position: { x: 550, y: 240 },
-    className: "shadow-sm rounded-md border border-slate-200 bg-white text-xs",
-  },
-  {
-    id: "report",
-    type: "output",
-    data: {
-      label: (
-        <div className="flex items-center gap-2 px-3 py-2">
-          <FileText className="w-5 h-5 text-sky-600" />
-          <span className="font-medium text-sm">Report</span>
-        </div>
-      )
-    },
-    position: { x: 750, y: 150 },
-    className: "shadow-lg rounded-lg border-2 border-sky-500 bg-sky-50",
-  },
-];
+type FlowCardBadge = {
+  label: string;
+  tone?: "accent" | "neutral" | "success";
+};
 
-const initialEdges: Edge[] = [
-  // ShipSecAI to Integrations
-  { id: "e1-slack", source: "1", target: "slack", animated: true, style: { stroke: "#9333ea", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#9333ea" } },
-  { id: "e1-github", source: "1", target: "github", animated: true, style: { stroke: "#1e293b", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#1e293b" } },
-  { id: "e1-google", source: "1", target: "google", animated: true, style: { stroke: "#2563eb", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#2563eb" } },
-  // Integrations to Users
-  { id: "e-slack-u1", source: "slack", target: "user1", animated: true, style: { stroke: "#9333ea", strokeWidth: 1.5 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#9333ea" } },
-  { id: "e-github-u2", source: "github", target: "user2", animated: true, style: { stroke: "#1e293b", strokeWidth: 1.5 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#1e293b" } },
-  { id: "e-google-u3", source: "google", target: "user3", animated: true, style: { stroke: "#2563eb", strokeWidth: 1.5 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#2563eb" } },
-  { id: "e-slack-u4", source: "slack", target: "user4", animated: true, style: { stroke: "#9333ea", strokeWidth: 1.5 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#9333ea" } },
-  // Users to Report
-  { id: "e-u1-report", source: "user1", target: "report", animated: true, style: { stroke: "#0ea5e9", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#0ea5e9" } },
-  { id: "e-u2-report", source: "user2", target: "report", animated: true, style: { stroke: "#0ea5e9", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#0ea5e9" } },
-  { id: "e-u3-report", source: "user3", target: "report", animated: true, style: { stroke: "#0ea5e9", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#0ea5e9" } },
-  { id: "e-u4-report", source: "user4", target: "report", animated: true, style: { stroke: "#0ea5e9", strokeWidth: 2 }, markerEnd: { type: MarkerType.ArrowClosed, color: "#0ea5e9" } },
-];
+type FlowCardData = {
+  accentColor: string;
+  icon: ReactNode;
+  iconClass: string;
+  title: string;
+  subtitle: string;
+  fields: FlowCardField[];
+  badges: FlowCardBadge[];
+  statusTone?: "success" | "warning";
+  isActive?: boolean;
+};
 
-export function FlowDemoSection() {
+type FlowEdgeData = {
+  accentColor: string;
+  isActive?: boolean;
+};
+
+const hexToRgba = (hex: string, alpha: number) => {
+  const sanitized = hex.replace("#", "");
+  if (sanitized.length !== 6) {
+    return `rgba(148, 163, 184, ${alpha})`;
+  }
+  const bigint = Number.parseInt(sanitized, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+};
+
+const statusToneClasses: Record<NonNullable<FlowCardData["statusTone"]>, string> = {
+  success: "bg-emerald-500",
+  warning: "bg-amber-400",
+};
+
+const badgeToneClasses: Record<NonNullable<FlowCardBadge["tone"]>, string> = {
+  accent: "border-sky-300 bg-sky-100 text-sky-800",
+  neutral: "border-slate-200 bg-slate-100 text-slate-600",
+  success: "border-emerald-400 bg-emerald-100 text-emerald-700",
+};
+
+const FlowCardNode = ({ data }: NodeProps<FlowCardData>) => {
+  const { icon, iconClass, title, subtitle, fields, badges, accentColor, statusTone, isActive } = data;
 
   return (
-    <section id="demo" className="py-24 bg-gradient-to-br from-slate-50 to-emerald-50/30">
-      <div className="max-w-6xl mx-auto px-6">
+    <motion.div
+      initial={false}
+      animate={{
+        scale: isActive ? 1.04 : 1,
+        boxShadow: isActive
+          ? "0 24px 70px rgba(14, 165, 233, 0.25)"
+          : "0 18px 55px rgba(15, 23, 42, 0.10)",
+      }}
+      transition={{ type: "spring", stiffness: 230, damping: 22 }}
+      className="relative w-[270px] rounded-3xl border-2 bg-white p-6"
+      style={{ borderColor: isActive ? accentColor : "rgba(203,213,225,0.8)" }}
+    >
+      <Handle
+        type="target"
+        position={Position.Left}
+        className="!h-3.5 !w-3.5 !bg-white"
+        style={{
+          borderWidth: 2,
+          borderColor: isActive ? accentColor : "rgba(148,163,184,0.6)",
+          boxShadow: `0 0 0 ${isActive ? 6 : 4}px ${hexToRgba(accentColor, isActive ? 0.22 : 0.1)}`,
+        }}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        className="!h-3.5 !w-3.5 !bg-white"
+        style={{
+          borderWidth: 2,
+          borderColor: isActive ? accentColor : "rgba(148,163,184,0.6)",
+          boxShadow: `0 0 0 ${isActive ? 6 : 4}px ${hexToRgba(accentColor, isActive ? 0.22 : 0.1)}`,
+        }}
+      />
+
+      {statusTone ? (
+        <span
+          className={`absolute right-5 top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full ${statusToneClasses[statusTone]}`}
+          style={{ boxShadow: `0 0 0 6px ${hexToRgba(accentColor, 0.18)}` }}
+        />
+      ) : null}
+
+      <div className="flex items-center gap-3">
+        <div className={`flex h-12 w-12 items-center justify-center rounded-2xl border ${iconClass}`}>
+          {icon}
+        </div>
+        <div>
+          <p className="text-xs font-medium uppercase tracking-wide text-slate-400">{subtitle}</p>
+          <p className="text-lg font-semibold text-slate-900">{title}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 space-y-4">
+        {fields.map((field) => (
+          <div
+            key={field.label}
+            className="flex items-center justify-between rounded-xl border border-slate-100 bg-slate-50 px-4 py-2"
+          >
+            <span className="text-xs font-medium uppercase tracking-wider text-slate-500">{field.label}</span>
+            <span className={`text-sm font-semibold ${field.accent ? "text-slate-900" : "text-slate-500"}`}>
+              {field.value}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {badges.map((badge) => (
+          <span
+            key={badge.label}
+            className={`rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${badgeToneClasses[badge.tone ?? "neutral"]}`}
+          >
+            {badge.label}
+          </span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+export function FlowDemoSection() {
+  const baseEdgeColor = "#d4ddea";
+  const inactiveEdgeOpacity = 0.55;
+
+  const nodeTypes = useMemo(() => ({ flowCard: FlowCardNode }), []);
+
+  const initialNodes = useMemo<Node<FlowCardData>[]>(() => [
+    {
+      id: "file-loader",
+      type: "flowCard",
+      position: { x: 0, y: 50 },
+      data: {
+        accentColor: "#38bdf8",
+        iconClass: "border-sky-200 bg-sky-100 text-sky-700",
+        icon: <Upload className="h-5 w-5" strokeWidth={2} />,
+        title: "File Loader",
+        subtitle: "Source file",
+        fields: [
+          { label: "File Upload", value: "shipsec-offboarding.csv", accent: true },
+          { label: "Parse As", value: "auto" },
+        ],
+        badges: [
+          { label: "ShipSecAI", tone: "accent" },
+          { label: "v1.0.0", tone: "neutral" },
+        ],
+        statusTone: "success",
+      },
+    },
+    {
+      id: "subfinder",
+      type: "flowCard",
+      position: { x: 310, y: 180 },
+      data: {
+        accentColor: "#818cf8",
+        iconClass: "border-indigo-200 bg-indigo-100 text-indigo-700",
+        icon: <Search className="h-5 w-5" strokeWidth={2} />,
+        title: "Subfinder",
+        subtitle: "Enrichment",
+        fields: [
+          { label: "Target Domain", value: "shipsec.ai", accent: true },
+          { label: "Output Format", value: "json" },
+        ],
+        badges: [
+          { label: "Live scan", tone: "accent" },
+          { label: "Stable", tone: "neutral" },
+        ],
+        statusTone: "success",
+      },
+    },
+    {
+      id: "output-saver",
+      type: "flowCard",
+      position: { x: 620, y: 310 },
+      data: {
+        accentColor: "#34d399",
+        iconClass: "border-emerald-200 bg-emerald-100 text-emerald-700",
+        icon: <Save className="h-5 w-5" strokeWidth={2} />,
+        title: "Output Saver",
+        subtitle: "Destination",
+        fields: [
+          { label: "File Name", value: "workflow-01.json", accent: true },
+          { label: "Destination", value: "Storage bucket" },
+        ],
+        badges: [
+          { label: "Audited", tone: "neutral" },
+          { label: "Latest", tone: "success" },
+        ],
+        statusTone: "success",
+      },
+    },
+  ], []);
+
+  const initialEdges = useMemo<Edge<FlowEdgeData>[]>(() => [
+    {
+      id: "edge-file-subfinder",
+      source: "file-loader",
+      target: "subfinder",
+      type: "smoothstep",
+      markerEnd: { type: MarkerType.ArrowClosed, color: baseEdgeColor, width: 20, height: 20 },
+      data: { accentColor: "#38bdf8" },
+      style: { strokeWidth: 2.4, stroke: baseEdgeColor, opacity: inactiveEdgeOpacity },
+    },
+    {
+      id: "edge-subfinder-output",
+      source: "subfinder",
+      target: "output-saver",
+      type: "smoothstep",
+      markerEnd: { type: MarkerType.ArrowClosed, color: baseEdgeColor, width: 20, height: 20 },
+      data: { accentColor: "#34d399" },
+      style: { strokeWidth: 2.4, stroke: baseEdgeColor, opacity: inactiveEdgeOpacity },
+    },
+  ], [baseEdgeColor]);
+
+  const [nodes, setNodes, onNodesChange] = useNodesState<FlowCardData>(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<FlowEdgeData>(initialEdges);
+
+  const highlightSequence = useMemo(
+    () => [
+      {
+        title: "Ingest security artifacts",
+        description:
+          "Upload access exports, HR feeds, or vulnerability reports directly into ShipSecAI.",
+        nodes: ["file-loader"],
+        edges: [] as string[],
+      },
+      {
+        title: "Automated reconnaissance",
+        description: "Subfinder enriches every asset with live subdomain discovery and context.",
+        nodes: ["file-loader", "subfinder"],
+        edges: ["edge-file-subfinder"],
+      },
+      {
+        title: "Assemble the offboarding package",
+        description:
+          "Output saver consolidates evidence, rollback steps, and audit metadata automatically.",
+        nodes: ["subfinder", "output-saver"],
+        edges: ["edge-subfinder-output"],
+      },
+      {
+        title: "Hand-off anywhere",
+        description:
+          "Send the finished workflow to storage, SOAR, or ship it via secure notifications.",
+        nodes: ["output-saver"],
+        edges: [] as string[],
+      },
+    ],
+    []
+  );
+
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const activeStep = highlightSequence[activeStepIndex];
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveStepIndex((index) => (index + 1) % highlightSequence.length);
+    }, 3600);
+
+    return () => window.clearInterval(interval);
+  }, [highlightSequence.length]);
+
+  useEffect(() => {
+    setNodes((items) =>
+      items.map((node) => ({
+        ...node,
+        data: {
+          ...node.data,
+          isActive: activeStep.nodes.includes(node.id),
+        },
+      }))
+    );
+
+    setEdges((items) =>
+      items.map((edge) => {
+        const isActive = activeStep.edges.includes(edge.id);
+        const accentColor = edge.data?.accentColor ?? "#38bdf8";
+
+        return {
+          ...edge,
+          animated: isActive,
+          data: {
+            ...edge.data,
+            isActive,
+          },
+          style: {
+            ...(edge.style ?? {}),
+            stroke: isActive ? accentColor : baseEdgeColor,
+            strokeWidth: isActive ? 3.4 : 2.4,
+            opacity: isActive ? 1 : inactiveEdgeOpacity,
+          },
+          markerEnd: edge.markerEnd
+            ? { ...edge.markerEnd, color: isActive ? accentColor : baseEdgeColor }
+            : edge.markerEnd,
+        };
+      })
+    );
+  }, [activeStep, baseEdgeColor, inactiveEdgeOpacity, setEdges, setNodes]);
+
+  const benefits = useMemo(
+    () => [
+      "Drag-and-drop orchestration with ShipSecAI guardrails already embedded.",
+      "Animated connectors make it easy to preview each hand-off before deploying.",
+      "Versioned actions keep an auditable trail for compliance and fast rollbacks.",
+    ],
+    []
+  );
+
+  return (
+    <section id="demo" className="py-24 bg-white">
+      <div className="mx-auto max-w-7xl px-6">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
-            Automate Employee Offboarding
-          </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
-            See how ShipSecAI automatically revokes access across your entire security stack in seconds.
+          <h2 className="text-4xl font-bold text-slate-900 md:text-5xl">Langflow-style ShipSecAI flow</h2>
+          <p className="mt-4 text-lg text-slate-600">
+            Explore the ShipSecAI offboarding blueprint with animated hand-offs from ingestion to
+            audit-ready exports.
           </p>
-          {/* <Button size="lg" className="bg-emerald-500 hover:bg-emerald-600 text-white group">
-            <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-            Watch Demo
-          </Button> */}
         </motion.div>
-        <div className="relative">
-      <HeroVideoDialog
-        className="block dark:hidden"
-        animationStyle="from-center"
-        videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-        thumbnailSrc="https://startup-template-sage.vercel.app/hero-light.png"
-        thumbnailAlt="Hero Video"
-      />
-      <HeroVideoDialog
-        className="hidden dark:block"
-        animationStyle="from-center"
-        videoSrc="https://www.youtube.com/embed/qh3NGpYRG3I?si=4rb-zSdDkVK9qxxb"
-        thumbnailSrc="https://startup-template-sage.vercel.app/hero-dark.png"
-        thumbnailAlt="Hero Video"
-      />
-    </div>
-        {/* <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="h-[600px] bg-white rounded-3xl border-2 border-slate-200 shadow-2xl overflow-hidden"
-        > */}
-          {/* <ReactFlow
-            nodes={initialNodes}
-            edges={initialEdges}
-            fitView
-            attributionPosition="bottom-right"
-            className="bg-gradient-to-br from-slate-50 to-white"
-            nodesDraggable={false}
-            nodesConnectable={false}
-            elementsSelectable={false}
-            zoomOnScroll={false}
-            // panOnScroll
-            panOnDrag
-            zoomOnPinch={false}
-            minZoom={0.9}
-            maxZoom={1.2}
-          > */}
-            {/* <Background color="#e2e8f0" gap={20} size={1} /> */}
-            {/* <Controls /> */}
-            {/* <MiniMap
-              nodeColor={(node) => {
-                if (node.id === '1') return '#10b981';
-                if (node.id === 'report') return '#0ea5e9';
-                return '#ffffff';
-              }}
-              className="bg-slate-50 border border-slate-200"
-            /> */}
-          {/* </ReactFlow>
-        </motion.div> */}
 
-        {/* Benefits */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 grid md:grid-cols-3 gap-8"
-        >
-          <div className="text-center">
-            <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Users className="w-8 h-8 text-blue-600" />
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="space-y-10"
+          >
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
+              <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
+                Live walkthrough
+              </span>
+              <motion.div
+                key={activeStep.title}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4 }}
+                className="mt-4"
+              >
+                <p className="text-2xl font-semibold text-slate-900">{activeStep.title}</p>
+                <p className="mt-3 text-sm text-slate-600">{activeStep.description}</p>
+              </motion.div>
+              <div className="mt-8 flex flex-wrap gap-2">
+                {highlightSequence.map((step, index) => {
+                  const isActive = index === activeStepIndex;
+                  return (
+                    <button
+                      key={step.title}
+                      type="button"
+                      onClick={() => setActiveStepIndex(index)}
+                      className={`group flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                        isActive
+                          ? "border-emerald-400 bg-emerald-50 text-emerald-700"
+                          : "border-slate-200 bg-white text-slate-500 hover:border-emerald-200 hover:text-emerald-600"
+                      }`}
+                    >
+                      <span
+                        className={`h-2 w-2 rounded-full transition ${
+                          isActive ? "bg-emerald-500" : "bg-slate-300 group-hover:bg-emerald-400"
+                        }`}
+                      />
+                      Step {index + 1}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Instant Trigger</h3>
-            <p className="text-slate-600">
-              HR system event automatically starts the workflow
-            </p>
-          </div>
 
-          <div className="text-center">
-            <div className="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Shield className="w-8 h-8 text-emerald-600" />
+            <ul className="space-y-5">
+              {benefits.map((benefit) => (
+                <li key={benefit} className="flex items-start gap-3 text-left">
+                  <span className="mt-0.5 rounded-full bg-emerald-100 p-1.5">
+                    <Sparkles className="h-4 w-4 text-emerald-600" strokeWidth={2} />
+                  </span>
+                  <span className="text-sm text-slate-600">{benefit}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50 px-5 py-3 text-sm text-emerald-700">
+              <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
+              ShipSecAI Studio ships with this flow as a starting template—customize it in seconds.
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Automated Actions</h3>
-            <p className="text-slate-600">
-              Access revoked across all systems simultaneously
-            </p>
-          </div>
+          </motion.div>
 
-          <div className="text-center">
-            <div className="w-16 h-16 bg-sky-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <FileText className="w-8 h-8 text-sky-600" />
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="relative rounded-[40px] border border-slate-100 bg-white p-6 shadow-[0_32px_90px_rgba(15,23,42,0.12)]"
+          >
+            <div className="pointer-events-none absolute inset-0 rounded-[32px] border border-slate-100/80" />
+            <div className="h-[520px] w-full">
+              <ReactFlow
+                nodes={nodes}
+                edges={edges}
+                nodeTypes={nodeTypes}
+                onNodesChange={onNodesChange}
+                onEdgesChange={onEdgesChange}
+                fitView
+                fitViewOptions={{ padding: 0.18 }}
+                nodesDraggable={false}
+                nodesConnectable={false}
+                elementsSelectable={false}
+                zoomOnScroll={false}
+                zoomOnPinch={false}
+                panOnScroll={false}
+                panOnDrag
+                minZoom={0.75}
+                maxZoom={1.05}
+                proOptions={{ hideAttribution: true }}
+                className="!bg-transparent"
+              >
+                <Background variant="dots" gap={22} size={1} color="#d7e0ee" />
+              </ReactFlow>
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-2">Audit Trail</h3>
-            <p className="text-slate-600">
-              Complete documentation for compliance review
-            </p>
-          </div>
-        </motion.div> */}
-
-
-
-
-
-
+          </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
