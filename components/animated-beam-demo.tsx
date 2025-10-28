@@ -34,7 +34,7 @@ export function AnimatedBeamMultipleOutputDemo({
   const div1Ref = useRef<HTMLDivElement>(null)
   const div2Ref = useRef<HTMLDivElement>(null)
   const div3Ref = useRef<HTMLDivElement>(null)
-  const div4Ref = useRef<HTMLDivElement>(null)
+  // const div4Ref = useRef<HTMLDivElement>(null)
   const div5Ref = useRef<HTMLDivElement>(null)
   const div6Ref = useRef<HTMLDivElement>(null)
   const div7Ref = useRef<HTMLDivElement>(null)
@@ -42,7 +42,7 @@ export function AnimatedBeamMultipleOutputDemo({
   return (
     <div
       className={cn(
-        "relative flex h-[500px] w-full items-center justify-center overflow-hidden p-10",
+        "relative flex h-[500px] w-full items-center justify-center overflow-hidden p-20",
         className
       )}
       ref={containerRef}
@@ -90,12 +90,12 @@ export function AnimatedBeamMultipleOutputDemo({
         toRef={div6Ref}
         duration={3}
       />
-      {/* <AnimatedBeam
+      <AnimatedBeam
         containerRef={containerRef}
         fromRef={div3Ref}
         toRef={div6Ref}
         duration={3}
-      /> */}
+      />
       {/* <AnimatedBeam
         containerRef={containerRef}
         fromRef={div4Ref}
