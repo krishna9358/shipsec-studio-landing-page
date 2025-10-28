@@ -1,10 +1,27 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const shouldReduceMotion = useReducedMotion();
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if device is mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Adjust animation duration and complexity based on device
+  const duration = isMobile ? 0.6 : 0.8;
+  const slideOffset = isMobile ? "50%" : "100%";
 
   return (
     <AnimatePresence mode="wait">
@@ -14,82 +31,66 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
         animate="animate"
         exit="exit"
       >
-        {/* Slide overlay */}
+        {/* Top loading bar */}
         <motion.div
-          className="fixed inset-0 z-50 bg-white"
-          variants={{
-            initial: {
-              x: "100%",
-              width: "100%",
-            },
-            animate: {
-              x: "0%",
-              width: "0%",
-            },
-            exit: {
-              x: ["0%", "100%"],
-              width: ["0%", "100%"],
-            },
+          className="fixed top-0 left-0 right-0 z-50 h-1 bg-gradient-to-r from-blue-500 to-blue-700"
+          initial={{ scaleX: 0, transformOrigin: "left" }}
+          animate={{ 
+            scaleX: [0, 1, 1, 1, 0],
+            transformOrigin: ["left", "left", "left", "right", "right"],
           }}
           transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
+            duration: duration * 2,
+            times: [0, 0.4, 0.6, 0.8, 1],
+            ease: "easeInOut",
           }}
         />
 
-        {/* Logo transition */}
+        {/* Main transition overlay */}
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-white"
+          className="fixed inset-0 z-50 bg-white transform-gpu"
           variants={{
             initial: {
-              x: "0%",
-              width: "100%",
+              x: "100%",
+              opacity: 1,
             },
             animate: {
-              x: "0%",
-              width: "0%",
+              x: "-100%",
+              opacity: 1,
             },
             exit: {
-              x: "0%",
-              width: "100%",
+              x: "-100%",
+              opacity: 0,
             },
           }}
           transition={{
-            duration: 0.8,
+            duration: duration,
             ease: [0.22, 1, 0.36, 1],
           }}
         >
-          <motion.div
-            variants={{
-              initial: {
-                opacity: 1,
-                scale: 1,
-              },
-              animate: {
-                opacity: 0,
-                scale: 0.8,
-              },
-              exit: {
-                opacity: 1,
-                scale: 1,
-              },
-            }}
-            transition={{
-              duration: 0.4,
-              ease: [0.22, 1, 0.36, 1],
-            }}
-          >
-            <div className="flex items-center space-x-4">
-              <div className="w-14 h-14">
+          <div className="flex h-full items-center justify-center">
+            <motion.div
+              className="flex items-center space-x-3"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ 
+                scale: [0.8, 1, 1, 0.8],
+                opacity: [0, 1, 1, 0],
+              }}
+              transition={{
+                duration: duration,
+                times: [0, 0.3, 0.7, 1],
+              }}
+            >
+              <div className="w-10 h-10 md:w-12 md:h-12">
                 <img
                   src="/logo-shipsec.png"
                   alt="ShipSecAI Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
-              <span className="text-3xl font-bold">ShipSecAI</span>
-            </div>
-          </motion.div>
+              <span className="text-xl md:text-2xl font-bold">ShipSecAI</span>
+            </motion.div>
+          </div>
         </motion.div>
 
         {/* Page content */}
@@ -97,7 +98,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
           variants={{
             initial: {
               opacity: 0,
-              y: 20,
+              y: isMobile ? 10 : 20,
             },
             animate: {
               opacity: 1,
@@ -105,12 +106,12 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
             },
             exit: {
               opacity: 0,
-              y: -20,
+              y: isMobile ? -10 : -20,
             },
           }}
           transition={{
-            duration: 0.8,
-            ease: [0.22, 1, 0.36, 1],
+            duration: duration,
+            ease: "easeInOut",
           }}
         >
           {children}
