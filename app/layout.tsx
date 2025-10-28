@@ -1,5 +1,5 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Space_Grotesk, Open_Sans, JetBrains_Mono } from 'next/font/google';
 
 const spaceGrotesk = Space_Grotesk({
@@ -26,6 +26,12 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'ShipSecAI - Your AI Security Copilot',
   description: 'Your AI Security Copilot. Build and deploy security automations without code. The no-code security automation platform for modern teams.',
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({

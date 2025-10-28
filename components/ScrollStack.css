@@ -1,7 +1,10 @@
 .scroll-stack-scroller {
   position: relative;
   width: 100%;
-  height: 100vh;
+  /* Use modern viewport units for iOS Safari */
+  height: 100vh;   /* fallback */
+  height: 100svh;  /* iOS 15+ safe viewport */
+  height: 100dvh;  /* dynamic viewport for modern browsers */
   overflow-y: auto;
   overflow-x: visible;
   overscroll-behavior: contain;
@@ -14,7 +17,10 @@
 
 .scroll-stack-inner {
   padding: 20vh 5rem 10rem;
-  min-height: 100vh;
+  /* Ensure inner container can expand to full safe viewport */
+  min-height: 100vh;  /* fallback */
+  min-height: 100svh; /* iOS 15+ */
+  min-height: 100dvh; /* modern */
 }
 
 .scroll-stack-card-wrapper {
