@@ -36,6 +36,8 @@ export function TestimonialsMarquee({
                 src={t.src}
                 alt={t.name}
                 className="h-12 w-12 shrink-0 rounded-full object-cover"
+                width={48}
+                height={48}
               />
               <div>
                 <h4 className="text-base font-semibold text-white">{t.name}</h4>

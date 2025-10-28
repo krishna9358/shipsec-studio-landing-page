@@ -68,7 +68,7 @@ export function Footer() {
               <h4 className="text-slate-900 font-semibold mb-4">Company</h4>
               <div className="flex flex-col gap-3">
                 <a href="#about" className="text-slate-600 hover:text-slate-900 transition-colors">About</a>
-                <a href="/blog" className="text-slate-600 hover:text-slate-900 transition-colors">Blog</a>
+                {/* <a href="/blog" className="text-slate-600 hover:text-slate-900 transition-colors">Blog</a> */}
                 <a href="#careers" className="text-slate-600 hover:text-slate-900 transition-colors">Careers</a>
                 <a href="#contact" className="text-slate-600 hover:text-slate-900 transition-colors">Contact</a>
               </div>

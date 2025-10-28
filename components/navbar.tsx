@@ -31,10 +31,10 @@ export function Navbar() {
       name: "Pricing",
       link: "#pricing",
     },
-    {
-      name: "Blog",
-      link: "/blog",
-    },
+    // {
+    //   name: "Blog",
+    //   link: "/blog",
+    // },
   ];
 
   return (

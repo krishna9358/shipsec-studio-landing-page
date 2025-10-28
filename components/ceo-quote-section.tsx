@@ -78,7 +78,7 @@ export function CEOQuoteSection() {
 
           {/* Marquee for wider, continuous scroll */}
           <div className="mt-10">
-            <TestimonialsMarquee testimonials={testimonials} speed={150} />
+            <TestimonialsMarquee testimonials={testimonials} speed={150}  />
           </div>
 
 

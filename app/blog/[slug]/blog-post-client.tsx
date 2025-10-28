@@ -78,6 +78,8 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               src={post.coverImage}
               alt={post.title}
               className="w-full h-full object-cover"
+              width={100}
+              height={100}
             />
           </motion.div>
         )}

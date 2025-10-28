@@ -167,7 +167,7 @@ export function FlowDemoSection() {
         title: "File Loader",
         subtitle: "Source file",
         fields: [
-          { label: "File Upload", value: "shipsec-offboarding.csv", accent: true },
+          { label: "File Upload", value: "shipsec-root-domains.csv", accent: true },
           { label: "Parse As", value: "auto" },
         ],
         badges: [
@@ -192,8 +192,8 @@ export function FlowDemoSection() {
           { label: "Output Format", value: "json" },
         ],
         badges: [
-          { label: "Live scan", tone: "accent" },
-          { label: "Stable", tone: "neutral" },
+          { label: "SHIPSECAI", tone: "accent" },
+          { label: "v1.0.0", tone: "neutral" },
         ],
         statusTone: "success",
       },
@@ -210,10 +210,10 @@ export function FlowDemoSection() {
         subtitle: "Destination",
         fields: [
           { label: "File Name", value: "workflow-01.json", accent: true },
-          { label: "Destination", value: "Storage bucket" },
+          { label: "v1.0.0", value: "Output" },
         ],
         badges: [
-          { label: "Audited", tone: "neutral" },
+          { label: "SHIPSECAI", tone: "accent" },
           { label: "Latest", tone: "success" },
         ],
         statusTone: "success",
@@ -250,7 +250,7 @@ export function FlowDemoSection() {
       {
         title: "Ingest security artifacts",
         description:
-          "Upload access exports, HR feeds, or vulnerability reports directly into ShipSecAI.",
+          "Upload list of root domains for the company.",
         nodes: ["file-loader"],
         edges: [] as string[],
       },
@@ -418,7 +418,9 @@ export function FlowDemoSection() {
 
             <div className="flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-50 px-5 py-3 text-sm text-blue-700">
               <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
-              ShipSecAI Studio ships with this flow as a starting template—customize it in seconds.
+               Start faster with built-in templates in ShipSecAI Studio - customize, connect, and deploy instantly.
+
+
             </div>
           </motion.div>
 

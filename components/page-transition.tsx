@@ -87,7 +87,9 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
                   src="/logo-shipsec.png"
                   alt="ShipSecAI Logo"
                   className="w-full h-full object-contain"
-                />
+                  width={100}
+                  height={100}
+/>
               </div>
               <span className="text-xl md:text-2xl font-bold">ShipSecAI</span>
             </motion.div>

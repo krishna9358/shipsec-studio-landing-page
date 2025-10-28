@@ -92,7 +92,7 @@ export default function PricingSection() {
             ],
             description: "Perfect for individuals and small projects",
             buttonText: "Get Started Free",
-            href: "/sign-up",
+            href: "/#schedule-demo-form",
             isPopular: false,
           },
           {
@@ -112,7 +112,7 @@ export default function PricingSection() {
             ],
             description: "Ideal for growing teams and businesses",
             buttonText: "Get Started",
-            href: "/sign-up",
+            href: "/#schedule-demo-form",
             isPopular: true,
           },
           {
