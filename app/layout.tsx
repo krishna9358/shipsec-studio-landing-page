@@ -1,5 +1,7 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
+import { MotionConfig } from 'motion/react';
+import { MotionConfig as FMotionConfig } from 'framer-motion';
 import { Space_Grotesk, Open_Sans, JetBrains_Mono } from 'next/font/google';
 
 const spaceGrotesk = Space_Grotesk({
@@ -40,8 +42,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>{children}</body>
+    <html lang="en">
+      <body className={`${spaceGrotesk.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>
+        <FMotionConfig reducedMotion="always" transition={{ duration: 0 }}>
+          <MotionConfig reducedMotion="always" transition={{ duration: 0 }}>
+            {children}
+          </MotionConfig>
+        </FMotionConfig>
+      </body>
     </html>
   );
 }

@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { motion } from "framer-motion";
+// animations removed
 import {
   IconClipboardCopy,
   IconFileBroken,
@@ -18,30 +18,13 @@ export function FeaturesSection() {
   return (
     <section className="py-20 bg-slate-50" id="features">
       <div className="text-center mb-16">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-base text-blue-600 font-semibold mb-3"
-        >
-          Security Features
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700"
-        >
+        <p className="text-base text-blue-600 font-semibold mb-3">Security Features</p>
+        <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700">
           Comprehensive Security Analysis
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-xl text-slate-600 max-w-3xl mx-auto"
-        >
+        </h2>
+        <p className="text-xl text-slate-600 max-w-3xl mx-auto">
           Advanced security tools and methodologies to protect your applications at every layer
-        </motion.p>
+        </p>
       </div>
     <BentoGrid className="max-w-7xl mx-auto md:auto-rows-[24rem] px-6">
 

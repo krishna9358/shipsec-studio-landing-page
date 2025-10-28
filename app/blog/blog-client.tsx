@@ -1,6 +1,5 @@
 'use client';
 
-import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import type { BlogPost } from '@/lib/blog';
@@ -15,11 +14,8 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
       ) : (
         <div className="grid md:grid-cols-2 gap-8">
           {posts.map((post, index) => (
-            <motion.article
+            <article
               key={post.slug}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-white rounded-3xl border-2 border-slate-200 overflow-hidden hover:shadow-2xl hover:border-blue-300 transition-all duration-300"
             >
               {post.coverImage && (
@@ -90,11 +86,10 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
                   </Link>
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </div>
       )}
     </div>
   );
 }
-

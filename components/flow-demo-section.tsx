@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useEffect, useMemo, useState } from "react";
-import { motion } from "framer-motion";
+// animations removed
 import ReactFlow, {
   Background,
   BackgroundVariant,
@@ -73,15 +73,12 @@ const FlowCardNode = ({ data }: NodeProps<FlowCardData>) => {
   const { icon, iconClass, title, subtitle, fields, badges, accentColor, statusTone, isActive } = data;
 
   return (
-    <motion.div
-      initial={false}
-      animate={{
-        scale: isActive ? 1.04 : 1,
-        
-      }}
-      transition={{ type: "spring", stiffness: 230, damping: 22 }}
+    <div
       className="relative w-[270px] rounded-3xl border-2 bg-white p-6"
-      style={{ borderColor: isActive ? accentColor : "rgba(203,213,225,0.8)" }}
+      style={{
+        borderColor: isActive ? accentColor : "rgba(203,213,225,0.8)",
+        transform: `scale(${isActive ? 1.04 : 1})`,
+      }}
     >
       <Handle
         type="target"
@@ -145,7 +142,7 @@ const FlowCardNode = ({ data }: NodeProps<FlowCardData>) => {
           </span>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -343,42 +340,24 @@ export function FlowDemoSection() {
   return (
     <section id="demo" className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mx-auto mb-16 max-w-3xl text-center"
-        >
+        <div className="mx-auto mb-16 max-w-3xl text-center">
           <h2 className="text-4xl font-bold text-slate-900 md:text-5xl">Orchestrate Security Workflows with AI-Powered Agents</h2>
           <p className="mt-4 text-lg text-slate-600">
             Explore the ShipSecAI offboarding blueprint with animated hand-offs from ingestion to
             audit-ready exports.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-            className="space-y-10"
-          >
+          <div className="space-y-10">
             <div className="rounded-3xl border border-slate-200 bg-white p-8 ">
               <span className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-400">
                 Live walkthrough
               </span>
-              <motion.div
-                key={activeStep.title}
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4 }}
-                className="mt-4"
-              >
+              <div className="mt-4" key={activeStep.title}>
                 <p className="text-2xl font-semibold text-slate-900">{activeStep.title}</p>
                 <p className="mt-3 text-sm text-slate-600">{activeStep.description}</p>
-              </motion.div>
+              </div>
               <div className="mt-8 flex flex-wrap gap-2">
                 {highlightSequence.map((step, index) => {
                   const isActive = index === activeStepIndex;
@@ -420,15 +399,9 @@ export function FlowDemoSection() {
               <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
               ShipSecAI Studio ships with this flow as a starting template—customize it in seconds.
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="relative rounded-[40px] border border-slate-100 bg-white p-6 "
-          >
+          <div className="relative rounded-[40px] border border-slate-100 bg-white p-6 ">
             <div className="pointer-events-none absolute inset-0 rounded-[32px] border border-slate-100/80" />
             <div className="h-[520px] w-full">
               <ReactFlow
@@ -454,10 +427,9 @@ export function FlowDemoSection() {
                 <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="#d7e0ee" />
               </ReactFlow>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-

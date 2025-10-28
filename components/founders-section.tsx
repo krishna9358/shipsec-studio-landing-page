@@ -1,6 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
 import { Linkedin, Github } from "lucide-react";
 
 const founders = [
@@ -26,31 +24,20 @@ export function FoundersSection() {
   return (
     <section id="founders" className="py-24 bg-slate-50">
       <div className="max-w-6xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4">
             Meet the Founders
           </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
             Built by security experts who understand the challenges of modern cybersecurity
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {founders.map((founder, index) => (
-            <motion.div
+            <div
               key={founder.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-2xl transition-all overflow-hidden group"
+              className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden group"
             >
               <div className="aspect-square overflow-hidden">
                 <img
@@ -86,7 +73,7 @@ export function FoundersSection() {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

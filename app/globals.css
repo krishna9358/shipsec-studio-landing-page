@@ -119,7 +119,7 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    scroll-behavior: auto;
     -webkit-text-size-adjust: 100%;
   }
 
@@ -172,6 +172,12 @@
     font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
     font-feature-settings: "liga" 0;
   }
+}
+
+/* Disable all animations and transitions site-wide */
+* , *::before, *::after {
+  animation: none !important;
+  transition: none !important;
 }
 
 /* Cybersecurity-themed grid background */

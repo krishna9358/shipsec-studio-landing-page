@@ -1,6 +1,4 @@
 "use client";
-
-import { motion } from "framer-motion";
 import { Building2, Quote } from "lucide-react";
 import { AnimatedTestimonials } from "./ui/animated-testimonials";
 import { TestimonialsMarquee } from "./ui/testimonials-marquee";
@@ -58,13 +56,7 @@ export function CEOQuoteSection() {
       <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE2YzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00em0wIDQwYzAtMi4yMSAxLjc5LTQgNC00czQgMS43OSA0IDQtMS43OSA0LTQgNC00LTEuNzktNC00ek0xNiAzNmMtMi4yMSAwLTQtMS43OS00LTRzMS43OS00IDQtNCA0IDEuNzkgNCA0LTEuNzkgNC00IDR6bTQwIDBjLTIuMjEgMC00LTEuNzktNC00czEuNzktNCA0LTQgNCAxLjc5IDQgNC0xLjc5IDQtNCA0eiIvPjwvZz48L2c+PC9zdmc+')] opacity-40"></div>
 
       <div className=" mx-auto  relative  text-white">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="text-center z-[9999]"
-        >
+        <div className="text-center z-[9999]">
           {/* <Quote className="w-16 h-16 text-blue-400 mx-auto mb-8 opacity-50" /> */}
           <h2 className="text-6xl font-bold tracking-tight sm:text-7xl mb-10 transform -rotate-6 z-[9999]">
           Love Letters to  <br />  <span className="text-blue-400">Shipsec AI</span>
@@ -103,7 +95,7 @@ export function CEOQuoteSection() {
               </div>
             </div> */}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

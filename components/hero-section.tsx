@@ -3,56 +3,27 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Github } from "lucide-react";
-import Threads from "@/components/ui/threads";
-import dynamic from "next/dynamic";
-
-const Spline = dynamic(() => import("@splinetool/react-spline").then(m => m.default), {
-  ssr: false,
-});
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden  bg-gradient-to-br from-slate-50 via-white to-blue-50">
-      <div className="absolute inset-0" style={{ width: '100%', height: '100%' }}>
-        <Threads
-          amplitude={1}
-          distance={0}
-          enableMouseInteraction={true}
-        />
-      </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-2 w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-left"
-          >
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="inline-block mb-6"
-            >
+          <motion.div className="text-left">
+            <motion.div className="inline-block mb-6">
               <div className="bg-sky-50 text-sky-700 text-sm font-medium px-4 py-2 rounded-full border border-sky-200">
                 Launch Week: New integrations available now
               </div>
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
               className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
             >
               Plumbing your security stack
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
               className="text-xl text-slate-600 mb-10 max-w-3xl leading-relaxed"
             >
               ShipSecAI is your AI Security Copilot - a powerful no-code platform to build and deploy security automations.
@@ -61,9 +32,6 @@ export function HeroSection() {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center sm:items-start justify-start gap-4"
             >
               <Button 
@@ -80,9 +48,6 @@ export function HeroSection() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-12 flex items-center justify-start gap-8 text-sm text-slate-500"
             >
               <div className="flex items-center gap-2">
@@ -99,19 +64,9 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative w-full h-[420px] md:h-[520px] lg:h-[600px]"
-          >
-            <div className="absolute inset-0">
-              <Spline
-                scene="https://prod.spline.design/M5rYyi5o5MAic14X/scene.splinecode"
-                style={{ width: '100%', height: '100%' }}
-                className="mt-10 pointer-events-none bg-white"
-              />
-      
+          <motion.div className="relative w-full h-[420px] md:h-[520px] lg:h-[600px]">
+            <div className="absolute inset-0 mt-10 bg-white rounded-xl border border-slate-200 flex items-center justify-center">
+              <span className="text-slate-500">Interactive preview removed</span>
             </div>
           </motion.div>
         </div>
