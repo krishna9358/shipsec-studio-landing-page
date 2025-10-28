@@ -12,7 +12,7 @@ const Spline = dynamic(() => import("@splinetool/react-spline").then(m => m.defa
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden  bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <section className="relative min-h-screen flex items-center overflow-hidden  bg-gradient-to-br from-slate-50 via-white to-blue-50 ">
       <div className="absolute inset-0" style={{ width: '100%', height: '100%' }}>
         <Threads
           amplitude={1}
@@ -21,7 +21,7 @@ export function HeroSection() {
         />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 py-2 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-2 w-full mt-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

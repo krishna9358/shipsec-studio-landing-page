@@ -43,7 +43,7 @@ export function FeaturesSection() {
           Advanced security tools and methodologies to protect your applications at every layer
         </motion.p>
       </div>
-    <BentoGrid className="max-w-7xl mx-auto md:auto-rows-[24rem] px-6">
+    <BentoGrid className="container mx-auto px-4 sm:px-6 lg:px-8 md:auto-rows-[24rem]">
 
       {items.map((item, i) => (
           <BentoGridItem

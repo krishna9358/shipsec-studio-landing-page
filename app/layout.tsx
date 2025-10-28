@@ -1,6 +1,9 @@
+"use client";
+
 import './globals.css';
-import type { Metadata } from 'next';
 import { Space_Grotesk, Open_Sans, JetBrains_Mono } from 'next/font/google';
+import { PageTransition } from '@/components/page-transition';
+import { TransitionProvider } from '@/components/transition-provider';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -23,11 +26,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
-export const metadata: Metadata = {
-  title: 'ShipSecAI - Your AI Security Copilot',
-  description: 'Your AI Security Copilot. Build and deploy security automations without code. The no-code security automation platform for modern teams.',
-};
-
 export default function RootLayout({
   children,
 }: {
@@ -35,7 +33,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className={`${spaceGrotesk.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>{children}</body>
+      <body className={`${spaceGrotesk.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>
+        <TransitionProvider>
+          <PageTransition>{children}</PageTransition>
+        </TransitionProvider>
+      </body>
     </html>
   );
 }

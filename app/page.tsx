@@ -4,7 +4,6 @@ import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/hero-section";
 import { IntegrationsSection } from "@/components/integrations-section";
 import { FlowDemoSection } from "@/components/flow-demo-section";
-
 import PricingSection from "@/components/pricing-section";
 import { FoundersSection } from "@/components/founders-section";
 import { CEOQuoteSection } from "@/components/ceo-quote-section";
@@ -14,41 +13,61 @@ import Spline from '@splinetool/react-spline/next';
 import TestingArrow from "@/components/testing-arrow";
 import { BenefitsGridSection } from "@/components/benefits-grid-section";
 import { FeaturesSection } from "@/components/features";
-
-
+import { ScrollProvider } from "@/components/scroll-provider";
+import { AnimatedSection } from "@/components/animated-section";
+import { ParallaxSection } from "@/components/parallax-section";
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
-     
-      <Navbar />
-      <HeroSection />
-      
-      {/* <Spline
-        scene="https://prod.spline.design/sTZ2eJMYsVCfanxG/scene.splinecode" 
-      />
-            <Spline
-        scene="https://prod.spline.design/O00CoyQi4X3lOO7b/scene.splinecode" 
-        className="w-10"
+    <ScrollProvider>
+      <main className="min-h-screen bg-white scroll-smooth snap-y snap-mandatory">
+        <Navbar />
+        
+        <AnimatedSection>
+          <ParallaxSection direction="up" offset={30}>
+            <HeroSection />
+          </ParallaxSection>
+        </AnimatedSection>
 
-      /> */}
+        <AnimatedSection delay={0.2}>
+          <ParallaxSection direction="down" offset={40}>
+            <FeaturesSection/>
+          </ParallaxSection>
+        </AnimatedSection>
 
-{/* <Spline
-        scene="https://prod.spline.design/4B1lPwV9JNHGfL3m/scene.splinecode" 
-      /> */}
-      {/* <TestingArrow/> */}
-      {/* <FeaturesSection /> */}
-      <div className="mt-20"> </div>
+        <AnimatedSection delay={0.3}>
+          <ParallaxSection direction="up" offset={35}>
+            <FlowDemoSection />
+          </ParallaxSection>
+        </AnimatedSection>
 
-      <FeaturesSection/>
-      <div className="mt-20"> </div>
-      <FlowDemoSection />
-      <IntegrationsSection />
-      {/* <BenefitsGridSection /> */}
-      {/* <FoundersSection /> */}
-      <PricingSection />
-      <CEOQuoteSection />
-      <KitFormSection />
-      <Footer />
-    </main>
+        <AnimatedSection delay={0.2}>
+          <ParallaxSection direction="down" offset={30}>
+            <IntegrationsSection />
+          </ParallaxSection>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.3}>
+          <ParallaxSection direction="up" offset={40}>
+            <PricingSection />
+          </ParallaxSection>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <ParallaxSection direction="down" offset={35}>
+            <CEOQuoteSection />
+          </ParallaxSection>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.3}>
+          <ParallaxSection direction="up" offset={30}>
+            <KitFormSection />
+          </ParallaxSection>
+        </AnimatedSection>
+
+        <AnimatedSection delay={0.2}>
+          <Footer />
+        </AnimatedSection>
+      </main>
+    </ScrollProvider>
   );
 }

@@ -33,7 +33,7 @@ export function KitFormSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-6xl font-bold text-slate-900 md:text-7xl mb-6 tracking-tight">
+          <h2 className="text-5xl font-bold text-slate-900 md:text-7xl mb-6 tracking-tight">
             Ready to get started?
           </h2>
           <p className="text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">

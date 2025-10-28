@@ -342,7 +342,7 @@ export function FlowDemoSection() {
 
   return (
     <section id="demo" className="py-24 bg-white">
-      <div className="mx-auto max-w-7xl px-6">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
