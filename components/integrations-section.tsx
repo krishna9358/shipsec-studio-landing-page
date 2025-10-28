@@ -1,33 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Webhook, Database, Cloud, Lock, Zap, AlertCircle, Server, KeyRound, FileCode, Mail, Terminal } from "lucide-react";
+import Image from "next/image";
 
 const integrationsRow1 = [
-  { name: "Jira", icon: Webhook, color: "text-blue-600" },
-  { name: "Slack", icon: Zap, color: "text-purple-600" },
-  { name: "GitHub", icon: Server, color: "text-slate-800" },
-  { name: "Okta", icon: Lock, color: "text-blue-500" },
-  { name: "AWS", icon: Cloud, color: "text-orange-500" },
-  { name: "Datadog", icon: AlertCircle, color: "text-indigo-600" },
+  { name: "Jira", logo: "/integrations/jira.svg" },
+  { name: "Slack", logo: "/integrations/slack.svg" },
+  { name: "GitHub", logo: "/integrations/github.svg" },
+  { name: "Okta", logo: "/integrations/okta.svg" },
+  { name: "AWS", logo: "/integrations/aws.svg" },
+  { name: "Datadog", logo: "/integrations/datadog.svg" },
 ];
 
 const integrationsRow2 = [
-  { name: "CrowdStrike", icon: Shield, color: "text-red-600" },
-  { name: "Azure", icon: Cloud, color: "text-sky-600" },
-  { name: "PostgreSQL", icon: Database, color: "text-blue-700" },
-  { name: "Splunk", icon: Database, color: "text-green-600" },
-  { name: "OneLogin", icon: KeyRound, color: "text-teal-600" },
-  { name: "GitLab", icon: FileCode, color: "text-orange-600" },
+  { name: "CrowdStrike", logo: "/integrations/crowdstrike.png" },
+  { name: "Azure", logo: "/integrations/azure.svg" },
+  { name: "PostgreSQL", logo: "/integrations/postgresql.svg" },
+  { name: "Splunk", logo: "/integrations/splunk.svg" },
+  { name: "OneLogin", logo: "/integrations/onelogin.png" },
+  { name: "GitLab", logo: "/integrations/gitlab.svg" },
 ];
 
 const integrationsRow3 = [
-  { name: "SendGrid", icon: Mail, color: "text-blue-500" },
-  { name: "Jenkins", icon: Terminal, color: "text-red-500" },
-  { name: "PagerDuty", icon: AlertCircle, color: "text-green-500" },
-  { name: "Auth0", icon: Lock, color: "text-orange-500" },
-  { name: "Docker", icon: Cloud, color: "text-sky-500" },
-  { name: "Kubernetes", icon: Server, color: "text-blue-600" },
+  { name: "SendGrid", logo: "/integrations/sendgrid.svg" },
+  { name: "Jenkins", logo: "/integrations/jenkins.svg" },
+  { name: "PagerDuty", logo: "/integrations/pagerduty.svg" },
+  { name: "Auth0", logo: "/integrations/auth0.svg" },
+  { name: "Docker", logo: "/integrations/docker.svg" },
+  { name: "Kubernetes", logo: "/integrations/kubernetes.svg" },
 ];
 
 const IntegrationRow = ({ integrations, direction = "left", duration = 40 }: { integrations: any[]; direction?: string; duration?: number }) => {
@@ -51,11 +51,19 @@ const IntegrationRow = ({ integrations, direction = "left", duration = 40 }: { i
       >
         {duplicated.map((integration, index) => (
           <motion.div
-            key={index}
+            key={`${integration.name}-${index}`}
             whileHover={{ scale: 1.05, y: -2 }}
-            className="flex-shrink-0 w-40 h-16 bg-white rounded-2xl border-2 border-slate-200 shadow-sm flex items-center justify-center gap-3 px-4 cursor-pointer transition-all hover:shadow-lg hover:border-blue-300"
+            className="flex-shrink-0 w-44 h-16 bg-white rounded-2xl border-2 border-slate-200 shadow-sm flex items-center justify-center gap-3 px-4 cursor-pointer transition-all hover:shadow-lg hover:border-blue-300"
           >
-            <integration.icon className={`w-6 h-6 ${integration.color}`} />
+            <div className="shrink-0 flex items-center justify-center">
+              <Image
+                src={integration.logo}
+                alt={`${integration.name} logo`}
+                width={28}
+                height={28}
+                className="object-contain w-7 h-7"
+              />
+            </div>
             <span className="text-sm font-bold text-slate-800">
               {integration.name}
             </span>
