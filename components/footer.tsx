@@ -12,9 +12,9 @@ export function Footer() {
           <div className="footer-brand">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center">
-                <Image src="/logo-shipsec.png" width={100} height={100} alt="ShipSec logo" />
+                <Image src="/logo-shipsec.png" width={100} height={100} alt="ShipSec logo" className="my-auto" />
               </div>
-              <h3 className="text-slate-900 text-2xl font-bold">ShipSec.ai</h3>
+              <h3 className="text-slate-900 text-2xl font-bold my-auto">ShipSec.ai</h3>
             </div>
             <p className="text-slate-600 text-lg mb-6">
               Autonomous Security for Every Business

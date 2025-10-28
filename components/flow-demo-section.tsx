@@ -350,7 +350,7 @@ export function FlowDemoSection() {
           transition={{ duration: 0.6 }}
           className="mx-auto mb-16 max-w-3xl text-center"
         >
-          <h2 className="text-4xl font-bold text-slate-900 md:text-5xl">Langflow-style ShipSecAI flow</h2>
+          <h2 className="text-4xl font-bold text-slate-900 md:text-5xl">Orchestrate Security Workflows with AI-Powered Agents</h2>
           <p className="mt-4 text-lg text-slate-600">
             Explore the ShipSecAI offboarding blueprint with animated hand-offs from ingestion to
             audit-ready exports.

@@ -46,7 +46,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight"
             >
-              Stop fighting your tools
+              Plumbing your security stack
             </motion.h1>
 
             <motion.p

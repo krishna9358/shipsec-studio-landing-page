@@ -64,9 +64,16 @@ const items = [
   {
     title: "STRIDE Security Analysis",
     description: "Identify and mitigate security risks using the industry-standard STRIDE framework.",
-    header: <div className="flex items-center justify-center w-full h-full rounded-xl overflow-hidden">
-      <div className="h-[80px] flex items-center fill-contain">
-        <Image src="/stride.webp" alt="STRIDE" width={780} height={80} />
+    header: <div className="flex items-center justify-center w-full h-full rounded-xl overflow-hidden border border-slate-200" >
+      <div className="h-[80px] flex items-center fill-contain bg-white">
+        <Image
+          src="/stride.webp"
+          alt="STRIDE"
+          width={780}
+          height={80}
+          style={{ filter: "invert(1) brightness(1.2)" }}
+          className="object-contain "
+        />
       </div>
     </div>,
     className: "md:col-span-2",
@@ -75,8 +82,8 @@ const items = [
   {
     title: "Security Checklist",
     description: "Prioritized security items with clear remediation steps.",
-    header: <div className="w-full h-[180px] bg-gradient-to-br from-indigo-100 to-white p-6 rounded-xl flex items-center justify-center">
-      <div className="w-full max-w-md">
+    header: <div className="w-full h-[100px] mt-24 rounded-xl flex items-center justify-center">
+      <div className="w-full ">
         <AnimatedListDemo />
       </div>
     </div>,
@@ -84,9 +91,9 @@ const items = [
     icon: <IconFileBroken className="h-4 w-4 text-indigo-500" />,
   },
   {
-    title: "Questions & Analysis",
-    description: "Smart security questionnaire tailored to your architecture.",
-    header: <div className="w-full h-[180px] rounded-xl flex items-center justify-center">
+    title: "No-Code Security Orchestration",
+    description: "Visual workflow builder to design and automate security processes without writing code.",
+    header: <div className="w-full h-[220px]  rounded-xl flex items-center justify-center">
       <div className="w-full max-w-md scale-90">
         <AnimatedBeamMultipleOutputDemo />
       </div>
@@ -97,9 +104,17 @@ const items = [
   {
     title: "Data Security Overview",
     description: "Comprehensive data flow mapping and privacy risk analysis with LINDDUN methodology.",
-    header: <div className="flex items-center justify-center w-full h-full rounded-xl overflow-hidden">
+    header: <div className="flex items-center justify-center w-full h-full rounded-xl overflow-hidden border border-slate-200">
       <div className="h-[180px] flex items-center fill-contain">
-        <Image src="/ds-zoomed.webp" alt="LINDDUN" width={780} height={180} />
+
+        <Image
+          src="/ds-zoomed.webp"
+          alt="LINDDUN"
+          width={780}
+          height={180}
+          style={{ filter: "invert(1) brightness(1.2)" }}
+          className="object-contain"
+        />
       </div>
     </div>,
     className: "md:col-span-2",
