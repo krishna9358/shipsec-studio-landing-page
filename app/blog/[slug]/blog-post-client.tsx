@@ -3,6 +3,7 @@
 // animations removed
 import type { BlogPost } from '@/lib/blog';
 import { Calendar, Clock, User } from 'lucide-react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 export function BlogPostClient({ post }: { post: BlogPost }) {
@@ -53,7 +54,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
 
         {post.coverImage && (
           <div className="aspect-video rounded-3xl overflow-hidden mb-12 border-2 border-slate-200 shadow-xl">
-            <img
+            <Image
               src={post.coverImage}
               alt={post.title}
               className="w-full h-full object-cover"
