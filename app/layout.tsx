@@ -19,6 +19,11 @@ const openSans = Open_Sans({
   display: 'swap',
 });
 
+const metadata = {
+  title: 'ShipSecAI - OS for Modern Security Teams',
+  description: 'Shipsec AI is your AI Security Copilot - a powerful no-code platform to build and deploy security automations. It comes with batteries included and supports all major security tools, cloud platforms, and a growing library of integrations.',
+}
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
