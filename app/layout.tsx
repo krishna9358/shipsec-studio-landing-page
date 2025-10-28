@@ -1,9 +1,12 @@
 "use client";
 
 import './globals.css';
+import 'aos/dist/aos.css';
 import { Space_Grotesk, Open_Sans, JetBrains_Mono } from 'next/font/google';
 import { PageTransition } from '@/components/page-transition';
 import { TransitionProvider } from '@/components/transition-provider';
+import { useEffect } from 'react';
+import AOS from 'aos';
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ['latin'],
@@ -36,6 +39,14 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      once: true,
+      easing: 'ease-out',
+    });
+  }, []);
+
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${spaceGrotesk.variable} ${openSans.variable} ${jetbrainsMono.variable}`}>

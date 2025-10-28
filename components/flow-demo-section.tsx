@@ -7,6 +7,7 @@ import ReactFlow, {
   Background,
   BackgroundVariant,
   Edge,
+  EdgeProps,
   Handle,
   MarkerType,
   Node,
@@ -14,6 +15,8 @@ import ReactFlow, {
   Position,
   useEdgesState,
   useNodesState,
+  getBezierPath,
+  BaseEdge,
 } from "reactflow";
 import "reactflow/dist/style.css";
 import { ArrowRight, Save, Search, Sparkles, Upload } from "lucide-react";
@@ -67,6 +70,38 @@ const badgeToneClasses: Record<NonNullable<FlowCardBadge["tone"]>, string> = {
   accent: "border-sky-300 bg-sky-100 text-sky-800",
   neutral: "border-slate-200 bg-slate-100 text-slate-600",
   success: "border-blue-400 bg-blue-100 text-blue-700",
+};
+
+// Custom edge component that creates L-shaped path (right → down → right)
+const CustomStepEdge = ({ 
+  id,
+  sourceX,
+  sourceY,
+  targetX,
+  targetY,
+  sourcePosition,
+  targetPosition,
+  style = {},
+  markerEnd,
+  data,
+}: EdgeProps<FlowEdgeData>) => {
+  // Calculate the path: start from source, go right, then down, then right to target
+  const midX = sourceX + (targetX - sourceX) * 0.5;
+  
+  const edgePath = `M ${sourceX},${sourceY} L ${midX},${sourceY} L ${midX},${targetY} L ${targetX},${targetY}`;
+
+  return (
+    <g>
+      <path
+        id={id}
+        style={style}
+        className="react-flow__edge-path"
+        d={edgePath}
+        markerEnd={markerEnd as string}
+        fill="none"
+      />
+    </g>
+  );
 };
 
 const FlowCardNode = ({ data }: NodeProps<FlowCardData>) => {
@@ -154,6 +189,7 @@ export function FlowDemoSection() {
   const inactiveEdgeOpacity = 0.55;
 
   const nodeTypes = useMemo(() => ({ flowCard: FlowCardNode }), []);
+  const edgeTypes = useMemo(() => ({ customStep: CustomStepEdge }), []);
 
   const initialNodes = useMemo<Node<FlowCardData>[]>(() => [
     {
@@ -226,7 +262,7 @@ export function FlowDemoSection() {
       id: "edge-file-subfinder",
       source: "file-loader",
       target: "subfinder",
-      type: "step",
+      type: "customStep",
       markerEnd: { type: MarkerType.ArrowClosed, color: baseEdgeColor, width: 20, height: 20 },
       data: { accentColor: "#38bdf8" },
       style: { strokeWidth: 2.4, stroke: baseEdgeColor, opacity: inactiveEdgeOpacity },
@@ -235,7 +271,7 @@ export function FlowDemoSection() {
       id: "edge-subfinder-output",
       source: "subfinder",
       target: "output-saver",
-      type: "step",
+      type: "customStep",
       markerEnd: { type: MarkerType.ArrowClosed, color: baseEdgeColor, width: 20, height: 20 },
       data: { accentColor: "#34d399" },
       style: { strokeWidth: 2.4, stroke: baseEdgeColor, opacity: inactiveEdgeOpacity },
@@ -333,9 +369,9 @@ export function FlowDemoSection() {
 
   const benefits = useMemo(
     () => [
-      "Drag-and-drop orchestration with ShipSecAI guardrails already embedded.",
-      "Animated connectors make it easy to preview each hand-off before deploying.",
-      "Versioned actions keep an auditable trail for compliance and fast rollbacks.",
+      "Build secure workflows, visually. Every block runs with ShipSecAI’s built-in guardrails.",
+      "See your automations in motion. Real-time previews highlight each hand-off before deployment.",
+      "Every action is versioned and auditable, ensuring traceable change history and confident rollbacks.",
     ],
     []
   );
@@ -343,11 +379,8 @@ export function FlowDemoSection() {
   return (
     <section id="demo" className="py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+        <div
+          data-aos="fade-up"
           className="mx-auto mb-16 max-w-3xl text-center"
         >
           <h2 className="text-4xl font-bold text-slate-900 md:text-5xl">Orchestrate Security Workflows with AI-Powered Agents</h2>
@@ -355,14 +388,12 @@ export function FlowDemoSection() {
             Explore the ShipSecAI offboarding blueprint with animated hand-offs from ingestion to
             audit-ready exports.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
+          <div
+            data-aos="fade-right"
+            data-aos-delay="100"
             className="space-y-10"
           >
             <div className="rounded-3xl border border-slate-200 bg-white p-8 ">
@@ -422,7 +453,7 @@ export function FlowDemoSection() {
 
 
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -437,6 +468,7 @@ export function FlowDemoSection() {
                 nodes={nodes}
                 edges={edges}
                 nodeTypes={nodeTypes}
+                edgeTypes={edgeTypes}
                 onNodesChange={onNodesChange}
                 onEdgesChange={onEdgesChange}
                 fitView
@@ -462,4 +494,5 @@ export function FlowDemoSection() {
     </section>
   );
 }
+
 

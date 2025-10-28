@@ -6,7 +6,6 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import useWindowSize from "@/lib/hooks/use-window-size";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 import Link from "next/link";
 import { useState, useRef } from "react";
@@ -136,28 +135,10 @@ export default function PricingSection() {
             isPopular: false,
           },
         ].map((plan, index) => (
-          <motion.div
+          <div
             key={index}
-            initial={{ y: 50, opacity: 1 }}
-            whileInView={
-              isDesktop
-                ? {
-                    y: plan.isPopular ? -20 : 0,
-                    opacity: 1,
-                    x: index === 2 ? -30 : index === 0 ? 30 : 0,
-                    scale: index === 0 || index === 2 ? 0.94 : 1.0,
-                  }
-                : {}
-            }
-            viewport={{ once: true }}
-            transition={{
-              duration: 1.6,
-              type: "spring",
-              stiffness: 100,
-              damping: 30,
-              delay: 0.4,
-              opacity: { duration: 0.5 },
-            }}
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
             className={cn(
               `rounded-2xl border-[1px] p-6 bg-background text-center lg:flex lg:flex-col lg:justify-center relative`,
               plan.isPopular ? "border-primary border-2" : "border-border",
@@ -229,7 +210,7 @@ export default function PricingSection() {
                 {plan.description}
               </p>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </Section>

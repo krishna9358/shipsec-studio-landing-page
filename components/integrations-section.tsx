@@ -93,19 +93,14 @@ export function IntegrationsSection() {
   return (
     <section id="integrations" className="py-16 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-6 mb-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">
             Integrate with Your Favorite Tools
           </h2>
           <p className="text-slate-600 text-base">
             Connect with 100+ security and productivity tools
           </p>
-        </motion.div>
+        </div>
       </div>
 
       <div className="relative space-y-4">

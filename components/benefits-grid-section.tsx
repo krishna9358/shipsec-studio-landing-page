@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
 import {
   IconRocket,
@@ -71,31 +70,27 @@ export function BenefitsGridSection() {
   return (
     <section className="relative mx-auto max-w-7xl px-4 py-20">
       <div className="text-center mb-16">
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+        <p
+          data-aos="fade-up"
           className="text-base text-red-500 mb-3"
         >
           Benefits
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+        </p>
+        <h2
+          data-aos="fade-up"
+          data-aos-delay="100"
           className="text-4xl font-bold mb-4"
         >
           Making Engineers 10x faster
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+        </h2>
+        <p
+          data-aos="fade-up"
+          data-aos-delay="200"
           className="text-xl text-neutral-600 dark:text-neutral-300"
         >
           We empower developers and technical teams to create, simulate, and
           manage AI-driven workflows visually
-        </motion.p>
+        </p>
       </div>
 
       {/* <BentoGrid className="max-w-7xl mx-auto md:auto-rows-[20rem]">
