@@ -20,7 +20,7 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-white rounded-3xl border-2 border-slate-200 overflow-hidden hover:shadow-2xl hover:border-emerald-300 transition-all duration-300"
+              className="group bg-white rounded-3xl border-2 border-slate-200 overflow-hidden hover:shadow-2xl hover:border-blue-300 transition-all duration-300"
             >
               {post.coverImage && (
                 <Link href={`/blog/${post.slug}`}>
@@ -58,7 +58,7 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
                     {post.tags.slice(0, 2).map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-3 py-1 bg-emerald-50 text-emerald-700 rounded-full font-medium"
+                        className="text-xs px-3 py-1 bg-blue-50 text-blue-700 rounded-full font-medium"
                       >
                         {tag}
                       </span>
@@ -67,7 +67,7 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
                 )}
 
                 <Link href={`/blog/${post.slug}`}>
-                  <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                  <h2 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">
                     {post.title}
                   </h2>
                 </Link>
@@ -83,7 +83,7 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
 
                   <Link
                     href={`/blog/${post.slug}`}
-                    className="flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold text-sm group/link"
+                    className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-semibold text-sm group/link"
                   >
                     Read More
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />

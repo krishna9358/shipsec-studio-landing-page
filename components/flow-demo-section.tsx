@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import ReactFlow, {
   Background,
+  BackgroundVariant,
   Edge,
   Handle,
   MarkerType,
@@ -225,7 +226,7 @@ export function FlowDemoSection() {
       id: "edge-file-subfinder",
       source: "file-loader",
       target: "subfinder",
-      type: "smoothstep",
+      type: "step",
       markerEnd: { type: MarkerType.ArrowClosed, color: baseEdgeColor, width: 20, height: 20 },
       data: { accentColor: "#38bdf8" },
       style: { strokeWidth: 2.4, stroke: baseEdgeColor, opacity: inactiveEdgeOpacity },
@@ -234,7 +235,7 @@ export function FlowDemoSection() {
       id: "edge-subfinder-output",
       source: "subfinder",
       target: "output-saver",
-      type: "smoothstep",
+      type: "step",
       markerEnd: { type: MarkerType.ArrowClosed, color: baseEdgeColor, width: 20, height: 20 },
       data: { accentColor: "#34d399" },
       style: { strokeWidth: 2.4, stroke: baseEdgeColor, opacity: inactiveEdgeOpacity },
@@ -308,7 +309,7 @@ export function FlowDemoSection() {
           ...edge,
           animated: isActive,
           data: {
-            ...edge.data,
+            accentColor: edge.data?.accentColor ?? "#38bdf8",
             isActive,
           },
           style: {
@@ -318,8 +319,13 @@ export function FlowDemoSection() {
             opacity: isActive ? 1 : inactiveEdgeOpacity,
           },
           markerEnd: edge.markerEnd
-            ? { ...edge.markerEnd, color: isActive ? accentColor : baseEdgeColor }
-            : edge.markerEnd,
+            ? {
+                type: MarkerType.ArrowClosed,
+                width: 20,
+                height: 20,
+                color: isActive ? accentColor : baseEdgeColor,
+              }
+            : undefined,
         };
       })
     );
@@ -445,7 +451,7 @@ export function FlowDemoSection() {
                 proOptions={{ hideAttribution: true }}
                 className="!bg-transparent"
               >
-                <Background variant="dots" gap={22} size={1} color="#d7e0ee" />
+                <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="#d7e0ee" />
               </ReactFlow>
             </div>
           </motion.div>

@@ -8,6 +8,7 @@ import { FeaturesSection } from "@/components/features-section";
 import PricingSection from "@/components/pricing-section";
 import { FoundersSection } from "@/components/founders-section";
 import { CEOQuoteSection } from "@/components/ceo-quote-section";
+import { KitFormSection } from "@/components/kit-form-section";
 import { Footer } from "@/components/footer";
 import Spline from '@splinetool/react-spline/next';
 import TestingArrow from "@/components/testing-arrow";
@@ -45,6 +46,7 @@ export default function Home() {
       {/* <FoundersSection /> */}
       <PricingSection />
       <CEOQuoteSection />
+      <KitFormSection />
       <Footer />
     </main>
   );

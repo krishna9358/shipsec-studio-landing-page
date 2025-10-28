@@ -28,7 +28,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <p className="text-lg text-slate-600 mb-8">
             The blog post you're looking for doesn't exist.
           </p>
-          <Link href="/blog" className="text-emerald-600 hover:text-emerald-700 font-semibold">
+          <Link href="/blog" className="text-blue-600 hover:text-blue-700 font-semibold">
             <ArrowLeft className="w-4 h-4 mr-2 inline" />
             Back to Blog
           </Link>
@@ -45,7 +45,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
       <div className="max-w-4xl mx-auto px-6 pt-24">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-slate-600 hover:text-emerald-600 mb-8 group font-medium"
+          className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 mb-8 group font-medium"
         >
           <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
           Back to Blog
@@ -65,7 +65,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                 <span>Previous Post</span>
               </div>
-              <p className="font-semibold text-slate-900 group-hover:text-emerald-600 transition-colors">
+              <p className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
                 {previous.title}
               </p>
             </Link>
@@ -82,7 +82,7 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                 <span>Next Post</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
-              <p className="font-semibold text-slate-900 group-hover:text-emerald-600 transition-colors">
+              <p className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">
                 {next.title}
               </p>
             </Link>

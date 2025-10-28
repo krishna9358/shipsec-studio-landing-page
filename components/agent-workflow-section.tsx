@@ -42,7 +42,7 @@ const steps: WorkflowStep[] = [
       "ShipSecAI writes concise postmortems, updates playbooks, and syncs the timeline to Notion so security leaders stay aligned.",
     indicator: "Step 03",
     badge: "Notion Sync",
-    icon: <PenSquare className="h-5 w-5 text-emerald-500" />,
+    icon: <PenSquare className="h-5 w-5 text-blue-500" />,
     highlights: ["Publish remediation checklist", "Track owner and due dates", "Send digest to exec channels"],
   },
 ];
@@ -122,13 +122,13 @@ export function AgentWorkflowSection() {
 
   return (
     <section className="relative bg-slate-950 py-24 text-white md:py-32">
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-emerald-900/30 opacity-90" />
-      <div className="absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-emerald-400/20 blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-900/30 opacity-90" />
+      <div className="absolute -top-32 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-blue-400/20 blur-3xl" />
       <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div ref={containerRef} className="grid items-center gap-16 lg:grid-cols-[1.05fr_1fr] lg:gap-20">
           <div className="space-y-10">
             <div className="space-y-4">
-              <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-sm font-medium text-emerald-300 ring-1 ring-white/10 backdrop-blur">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/5 px-4 py-1.5 text-sm font-medium text-blue-300 ring-1 ring-white/10 backdrop-blur">
                 <Bug className="h-4 w-4" />
                 ShipSecAI Agent Play
               </span>
@@ -153,11 +153,11 @@ export function AgentWorkflowSection() {
                 >
                   <div className="flex items-start gap-4">
                     <div className="mt-1 flex flex-col items-center">
-                      <span className="text-xs font-semibold uppercase tracking-widest text-emerald-300">
+                      <span className="text-xs font-semibold uppercase tracking-widest text-blue-300">
                         {step.indicator}
                       </span>
                       {index < steps.length - 1 && (
-                        <span className="mt-3 h-10 w-px bg-gradient-to-b from-emerald-300/60 via-white/10 to-transparent" />
+                        <span className="mt-3 h-10 w-px bg-gradient-to-b from-blue-300/60 via-white/10 to-transparent" />
                       )}
                     </div>
                     <div className="space-y-2">
@@ -197,13 +197,13 @@ export function AgentWorkflowSection() {
                     <p className="text-sm text-white/70">{step.description}</p>
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
-                    <p className="text-sm font-medium uppercase tracking-wide text-emerald-200">
+                    <p className="text-sm font-medium uppercase tracking-wide text-blue-200">
                       Agent actions
                     </p>
                     <ul className="mt-4 space-y-2 text-sm text-white/80">
                       {step.highlights.map((highlight) => (
                         <li key={highlight} className="flex items-center gap-2">
-                          <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
+                          <span className="h-1.5 w-1.5 rounded-full bg-blue-300" />
                           {highlight}
                         </li>
                       ))}

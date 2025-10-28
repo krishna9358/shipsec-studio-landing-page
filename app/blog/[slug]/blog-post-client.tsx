@@ -57,7 +57,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
               {post.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-sm px-4 py-1.5 bg-emerald-50 text-emerald-700 rounded-full font-medium border border-emerald-200"
+                  className="text-sm px-4 py-1.5 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-200"
                 >
                   {tag}
                 </span>
@@ -85,7 +85,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 prose-code:text-emerald-600 prose-code:bg-emerald-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-slate-900 prose-pre:border-2 prose-pre:border-slate-200"
+          className="prose prose-lg prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-900 prose-code:text-blue-600 prose-code:bg-blue-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-pre:bg-slate-900 prose-pre:border-2 prose-pre:border-slate-200"
         >
           <ReactMarkdown>{post.content}</ReactMarkdown>
         </motion.div>

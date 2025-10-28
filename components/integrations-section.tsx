@@ -53,7 +53,7 @@ const IntegrationRow = ({ integrations, direction = "left", duration = 40 }: { i
           <motion.div
             key={index}
             whileHover={{ scale: 1.05, y: -2 }}
-            className="flex-shrink-0 w-40 h-16 bg-white rounded-2xl border-2 border-slate-200 shadow-sm flex items-center justify-center gap-3 px-4 cursor-pointer transition-all hover:shadow-lg hover:border-emerald-300"
+            className="flex-shrink-0 w-40 h-16 bg-white rounded-2xl border-2 border-slate-200 shadow-sm flex items-center justify-center gap-3 px-4 cursor-pointer transition-all hover:shadow-lg hover:border-blue-300"
           >
             <integration.icon className={`w-6 h-6 ${integration.color}`} />
             <span className="text-sm font-bold text-slate-800">
