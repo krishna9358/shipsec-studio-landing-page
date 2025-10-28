@@ -9,9 +9,7 @@ import { FoundersSection } from "@/components/founders-section";
 import { CEOQuoteSection } from "@/components/ceo-quote-section";
 import { KitFormSection } from "@/components/kit-form-section";
 import { Footer } from "@/components/footer";
-import Spline from '@splinetool/react-spline/next';
-import TestingArrow from "@/components/testing-arrow";
-import { BenefitsGridSection } from "@/components/benefits-grid-section";
+
 import { FeaturesSection } from "@/components/features";
 import { ScrollProvider } from "@/components/scroll-provider";
 import { AnimatedSection } from "@/components/animated-section";

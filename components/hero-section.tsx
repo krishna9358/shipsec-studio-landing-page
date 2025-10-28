@@ -8,7 +8,7 @@ import dynamic from "next/dynamic";
 
 const Spline = dynamic(() => import("@splinetool/react-spline").then(m => m.default), {
   ssr: false,
-});
+}) as any;
 
 export function HeroSection() {
   return (

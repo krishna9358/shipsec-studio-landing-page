@@ -12,8 +12,6 @@ import Link from "next/link";
 import { useState, useRef } from "react";
 import { FaStar } from "react-icons/fa";
 import confetti from "canvas-confetti";
-import NumberFlow from "@number-flow/react";
-
 export default function PricingSection() {
   const [isMonthly, setIsMonthly] = useState(true);
   const { isDesktop } = useWindowSize();
@@ -81,26 +79,26 @@ export default function PricingSection() {
       <div className="grid grid-cols-1 md:grid-cols-3 sm:2 gap-4">
         {[
           {
-            name: "STARTER",
-            price: "50",
-            yearlyPrice: "40",
-            period: "per month",
+            name: "FREE",
+            price: "0",
+            yearlyPrice: "0",
+            period: "forever",
             features: [
-              "Up to 10 projects",
+              "Up to 3 projects",
               "Basic analytics",
-              "48-hour support response time",
-              "Limited API access",
               "Community support",
+              "Limited API access",
+              "Standard security features",
             ],
             description: "Perfect for individuals and small projects",
-            buttonText: "Start Free Trial",
+            buttonText: "Get Started Free",
             href: "/sign-up",
             isPopular: false,
           },
           {
-            name: "PROFESSIONAL",
-            price: "99",
-            yearlyPrice: "79",
+            name: "PRO",
+            price: "199",
+            yearlyPrice: "159",
             period: "per month",
             features: [
               "Unlimited projects",
@@ -110,6 +108,7 @@ export default function PricingSection() {
               "Priority support",
               "Team collaboration",
               "Custom integrations",
+              "Advanced security features",
             ],
             description: "Ideal for growing teams and businesses",
             buttonText: "Get Started",
@@ -118,11 +117,11 @@ export default function PricingSection() {
           },
           {
             name: "ENTERPRISE",
-            price: "299",
-            yearlyPrice: "239",
+            price: "Custom",
+            yearlyPrice: "Custom",
             period: "per month",
             features: [
-              "Everything in Professional",
+              "Everything in Pro",
               "Custom solutions",
               "Dedicated account manager",
               "1-hour support response time",
@@ -132,7 +131,7 @@ export default function PricingSection() {
               "SLA agreement",
             ],
             description: "For large organizations with specific needs",
-            buttonText: "Contact Sales",
+            buttonText: "Contact Support",
             href: "/contact",
             isPopular: false,
           },
@@ -185,18 +184,20 @@ export default function PricingSection() {
               </p>
               <div className="mt-6 flex items-center justify-center gap-x-2">
                 <span className="text-5xl font-bold tracking-tight text-foreground">
-                  ${isMonthly ? plan.price : plan.yearlyPrice}
+                  {plan.price === "Custom" ? "Custom" : `$${isMonthly ? plan.price : plan.yearlyPrice}`}
                 </span>
-                {plan.period !== "Next 3 months" && (
+                {plan.period !== "Next 3 months" && plan.price !== "Custom" && (
                   <span className="text-sm font-semibold leading-6 tracking-wide text-muted-foreground">
                     / {plan.period}
                   </span>
                 )}
               </div>
 
-              <p className="text-xs leading-5 text-muted-foreground">
-                {isMonthly ? "billed monthly" : "billed annually"}
-              </p>
+              {plan.price !== "Custom" && (
+                <p className="text-xs leading-5 text-muted-foreground">
+                  {isMonthly ? "billed monthly" : "billed annually"}
+                </p>
+              )}
 
               <ul className="mt-5 gap-2 flex flex-col">
                 {plan.features.map((feature, idx) => (
