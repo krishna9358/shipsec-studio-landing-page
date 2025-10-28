@@ -10,6 +10,11 @@ const integrationsRow1 = [
   { name: "Okta", logo: "/integrations/okta.svg" },
   { name: "AWS", logo: "/integrations/aws.svg" },
   { name: "Datadog", logo: "/integrations/datadog.svg" },
+  // Added more common integrations
+  { name: "Google Cloud", logo: "/integrations/gcp.svg" },
+  { name: "Stripe", logo: "/integrations/stripe.svg" },
+  { name: "Notion", logo: "/integrations/notion.svg" },
+  { name: "Asana", logo: "/integrations/asana.svg" },
 ];
 
 const integrationsRow2 = [
@@ -19,6 +24,11 @@ const integrationsRow2 = [
   { name: "Splunk", logo: "/integrations/splunk.svg" },
   { name: "OneLogin", logo: "/integrations/onelogin.png" },
   { name: "GitLab", logo: "/integrations/gitlab.svg" },
+  // Added more common integrations
+  { name: "ServiceNow", logo: "/integrations/servicenow.svg" },
+  { name: "CircleCI", logo: "/integrations/circleci.svg" },
+  { name: "Bitbucket", logo: "/integrations/bitbucket.svg" },
+  { name: "Zendesk", logo: "/integrations/zendesk.svg" },
 ];
 
 const integrationsRow3 = [
@@ -28,6 +38,11 @@ const integrationsRow3 = [
   { name: "Auth0", logo: "/integrations/auth0.svg" },
   { name: "Docker", logo: "/integrations/docker.svg" },
   { name: "Kubernetes", logo: "/integrations/kubernetes.svg" },
+  // Added more common integrations
+  { name: "Snyk", logo: "/integrations/snyk.svg" },
+  { name: "Snowflake", logo: "/integrations/snowflake.svg" },
+  { name: "Salesforce", logo: "/integrations/salesforce.svg" },
+  { name: "Grafana", logo: "/integrations/grafana.svg" },
 ];
 
 const IntegrationRow = ({ integrations, direction = "left", duration = 40 }: { integrations: any[]; direction?: string; duration?: number }) => {
