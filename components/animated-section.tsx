@@ -23,7 +23,7 @@ export function AnimatedSection({ children, className = "", delay = 0 }: Animate
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
-g  }, []);
+  }, []);
 
   // Adjust animation values for mobile
   const yOffset = isMobile ? 25 : 50;
