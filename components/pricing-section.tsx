@@ -14,7 +14,7 @@ import { FaStar } from "react-icons/fa";
 import confetti from "canvas-confetti";
 import NumberFlow from "@number-flow/react";
 
-export default function PricingBasic() {
+export default function PricingSection() {
   const [isMonthly, setIsMonthly] = useState(true);
   const { isDesktop } = useWindowSize();
   const switchRef = useRef<HTMLButtonElement>(null);
@@ -49,7 +49,7 @@ export default function PricingBasic() {
   };
 
   return (
-    <Section>
+    <Section id="pricing">
       <div className="text-center space-y-4 mb-12">
         <h2 className="text-4xl font-bold tracking-tight sm:text-5xl">
           Simple, Transparent Pricing

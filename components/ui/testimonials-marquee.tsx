@@ -21,14 +21,14 @@ export function TestimonialsMarquee({
   return (
     <div className="relative w-full overflow-hidden">
       <motion.div
-        className="flex w-max items-stretch gap-8 pr-8"
+        className="flex w-max items-stretch gap-2 pr-8"
         animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: speed, ease: "linear", repeat: Infinity }}
       >
         {items.map((t, idx) => (
           <article
             key={`${t.name}-${idx}`}
-            className="max-w-xl shrink-0 rounded-3xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm"
+            className="w-[450px] shrink-0 rounded-3xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm"
           >
             <div className="mb-4 flex items-center gap-4">
               <img
@@ -41,7 +41,7 @@ export function TestimonialsMarquee({
                 <p className="text-xs text-slate-300">{t.designation}</p>
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-slate-200">
+            <p className="text-sm leading-relaxed text-slate-200 line-clamp-[12]">
               {t.quote}
             </p>
           </article>

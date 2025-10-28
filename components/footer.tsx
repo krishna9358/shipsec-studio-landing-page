@@ -7,17 +7,24 @@ export function Footer() {
   return (
     <footer className="bg-white border-t border-slate-200">
       <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-5 gap-12 mb-12">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-4">
+        <div className="grid gap-16 md:grid-cols-[1.5fr,2fr]">
+          {/* Brand Section */}
+          <div className="footer-brand">
+            <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-xl flex items-center justify-center">
-              <Image src="/logo-shipsec.png" width={100} height={100}  alt="logo"/>
+                <Image src="/logo-shipsec.png" width={100} height={100} alt="ShipSec logo" />
               </div>
-              <h3 className="text-slate-900 text-2xl font-bold">ShipSecAI</h3>
+              <h3 className="text-slate-900 text-2xl font-bold">ShipSec.ai</h3>
             </div>
-            <p className="text-slate-600 leading-relaxed mb-6">
-              Your AI Security Copilot. Build and deploy security automations without code. The no-code security automation platform for modern teams.
+            <p className="text-slate-600 text-lg mb-6">
+              Autonomous Security for Every Business
             </p>
+            <a 
+              href="mailto:connect@shipsec.ai" 
+              className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2 mb-6"
+            >
+              connect@shipsec.ai
+            </a>
             <div className="flex items-center gap-3">
               <a
                 href="https://www.linkedin.com/company/shipsecai"
@@ -46,102 +53,53 @@ export function Footer() {
             </div>
           </div>
 
-          <div>
-            <h4 className="text-slate-900 font-bold mb-4">Product</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#features" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Features
-                </a>
-              </li>
-              <li>
-                <a href="#integrations" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Integrations
-                </a>
-              </li>
-              <li>
-                <a href="#pricing" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Pricing
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Documentation
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  API Reference
-                </a>
-              </li>
-            </ul>
-          </div>
+          {/* Links Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+              <h4 className="text-slate-900 font-semibold mb-4">Product</h4>
+              <div className="flex flex-col gap-3">
+                <a href="#features" className="text-slate-600 hover:text-slate-900 transition-colors">Features</a>
+                <a href="#integrations" className="text-slate-600 hover:text-slate-900 transition-colors">Integrations</a>
+                <a href="#docs" className="text-slate-600 hover:text-slate-900 transition-colors">Documentation</a>
+              </div>
+            </div>
 
-          <div>
-            <h4 className="text-slate-900 font-bold mb-4">Company</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="/blog" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Blog
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Partners
-                </a>
-              </li>
-            </ul>
-          </div>
+            <div>
+              <h4 className="text-slate-900 font-semibold mb-4">Company</h4>
+              <div className="flex flex-col gap-3">
+                <a href="#about" className="text-slate-600 hover:text-slate-900 transition-colors">About</a>
+                <a href="/blog" className="text-slate-600 hover:text-slate-900 transition-colors">Blog</a>
+                <a href="#careers" className="text-slate-600 hover:text-slate-900 transition-colors">Careers</a>
+                <a href="#contact" className="text-slate-600 hover:text-slate-900 transition-colors">Contact</a>
+              </div>
+            </div>
 
-          <div>
-            <h4 className="text-slate-900 font-bold mb-4">Legal</h4>
-            <ul className="space-y-3 text-sm">
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Privacy Policy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Security
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-slate-600 hover:text-slate-900 transition-colors">
-                  Compliance
-                </a>
-              </li>
-            </ul>
+            <div>
+              <h4 className="text-slate-900 font-semibold mb-4">Resources</h4>
+              <div className="flex flex-col gap-3">
+                <a href="#docs" className="text-slate-600 hover:text-slate-900 transition-colors">API Docs</a>
+                <a href="#guides" className="text-slate-600 hover:text-slate-900 transition-colors">Security Guides</a>
+                <a href="#support" className="text-slate-600 hover:text-slate-900 transition-colors">Support</a>
+                <a href="#status" className="text-slate-600 hover:text-slate-900 transition-colors">Status</a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="pt-8 border-t border-slate-200 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-600">
-            © 2025 ShipSecAI. All rights reserved.
-          </p>
-          <p className="text-sm text-slate-500">
-            Built by <a href="https://www.linkedin.com/in/aseem-shrey" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-emerald-600 transition-colors">Aseem Shrey</a> & <a href="https://www.linkedin.com/in/pranjal-paliwal" target="_blank" rel="noopener noreferrer" className="font-semibold hover:text-emerald-600 transition-colors">Pranjal Paliwal</a>
-          </p>
+        {/* Footer Bottom */}
+        <div className="mt-16 pt-8 border-t border-slate-200">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex flex-col md:flex-row items-center gap-6">
+              <span className="text-sm text-slate-600">© 2025 ShipSec.ai. All rights reserved.</span>
+              <div className="flex items-center gap-6">
+                <a href="/privacy-policy" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Privacy Policy</a>
+                <a href="#terms" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Terms of Service</a>
+                <a href="#security" className="text-sm text-slate-600 hover:text-slate-900 transition-colors">Security</a>
+              </div>
+            </div>
+            
+
+          </div>
         </div>
       </div>
     </footer>

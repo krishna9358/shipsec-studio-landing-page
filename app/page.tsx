@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar";
 import { HeroSection } from "@/components/hero-section";
 import { IntegrationsSection } from "@/components/integrations-section";
 import { FlowDemoSection } from "@/components/flow-demo-section";
-import { FeaturesSection } from "@/components/features-section";
+
 import PricingSection from "@/components/pricing-section";
 import { FoundersSection } from "@/components/founders-section";
 import { CEOQuoteSection } from "@/components/ceo-quote-section";
@@ -13,7 +13,8 @@ import { Footer } from "@/components/footer";
 import Spline from '@splinetool/react-spline/next';
 import TestingArrow from "@/components/testing-arrow";
 import { BenefitsGridSection } from "@/components/benefits-grid-section";
-import { BentoGridSecondDemo } from "@/components/features";
+import { FeaturesSection } from "@/components/features";
+
 
 export default function Home() {
   return (
@@ -35,13 +36,13 @@ export default function Home() {
         scene="https://prod.spline.design/4B1lPwV9JNHGfL3m/scene.splinecode" 
       /> */}
       {/* <TestingArrow/> */}
-      <IntegrationsSection />
-      <FlowDemoSection />
       {/* <FeaturesSection /> */}
       <div className="mt-20"> </div>
 
-      <BentoGridSecondDemo/>
+      <FeaturesSection/>
       <div className="mt-20"> </div>
+      <FlowDemoSection />
+      <IntegrationsSection />
       {/* <BenefitsGridSection /> */}
       {/* <FoundersSection /> */}
       <PricingSection />

@@ -59,14 +59,14 @@ const hexToRgba = (hex: string, alpha: number) => {
 };
 
 const statusToneClasses: Record<NonNullable<FlowCardData["statusTone"]>, string> = {
-  success: "bg-emerald-500",
+  success: "bg-blue-500",
   warning: "bg-amber-400",
 };
 
 const badgeToneClasses: Record<NonNullable<FlowCardBadge["tone"]>, string> = {
   accent: "border-sky-300 bg-sky-100 text-sky-800",
   neutral: "border-slate-200 bg-slate-100 text-slate-600",
-  success: "border-emerald-400 bg-emerald-100 text-emerald-700",
+  success: "border-blue-400 bg-blue-100 text-blue-700",
 };
 
 const FlowCardNode = ({ data }: NodeProps<FlowCardData>) => {
@@ -204,7 +204,7 @@ export function FlowDemoSection() {
       position: { x: 620, y: 310 },
       data: {
         accentColor: "#34d399",
-        iconClass: "border-emerald-200 bg-emerald-100 text-emerald-700",
+        iconClass: "border-blue-200 bg-blue-100 text-blue-700",
         icon: <Save className="h-5 w-5" strokeWidth={2} />,
         title: "Output Saver",
         subtitle: "Destination",
@@ -389,13 +389,13 @@ export function FlowDemoSection() {
                       onClick={() => setActiveStepIndex(index)}
                       className={`group flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
                         isActive
-                          ? "border-emerald-400 bg-emerald-50 text-emerald-700"
-                          : "border-slate-200 bg-white text-slate-500 hover:border-emerald-200 hover:text-emerald-600"
+                          ? "border-blue-400 bg-blue-50 text-blue-700"
+                          : "border-slate-200 bg-white text-slate-500 hover:border-blue-200 hover:text-blue-600"
                       }`}
                     >
                       <span
                         className={`h-2 w-2 rounded-full transition ${
-                          isActive ? "bg-emerald-500" : "bg-slate-300 group-hover:bg-emerald-400"
+                          isActive ? "bg-blue-500" : "bg-slate-300 group-hover:bg-blue-400"
                         }`}
                       />
                       Step {index + 1}
@@ -408,15 +408,15 @@ export function FlowDemoSection() {
             <ul className="space-y-5">
               {benefits.map((benefit) => (
                 <li key={benefit} className="flex items-start gap-3 text-left">
-                  <span className="mt-0.5 rounded-full bg-emerald-100 p-1.5">
-                    <Sparkles className="h-4 w-4 text-emerald-600" strokeWidth={2} />
+                  <span className="mt-0.5 rounded-full bg-blue-100 p-1.5">
+                    <Sparkles className="h-4 w-4 text-blue-600" strokeWidth={2} />
                   </span>
                   <span className="text-sm text-slate-600">{benefit}</span>
                 </li>
               ))}
             </ul>
 
-            <div className="flex items-center gap-3 rounded-2xl border border-emerald-100 bg-emerald-50 px-5 py-3 text-sm text-emerald-700">
+            <div className="flex items-center gap-3 rounded-2xl border border-blue-100 bg-blue-50 px-5 py-3 text-sm text-blue-700">
               <ArrowRight className="h-4 w-4" strokeWidth={2.2} />
               ShipSecAI Studio ships with this flow as a starting template—customize it in seconds.
             </div>

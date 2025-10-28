@@ -86,7 +86,7 @@ export function BlogComments({ postSlug }: BlogCommentsProps) {
   return (
     <div className="mt-16 pt-16 border-t border-slate-200 mb-16">
       <div className="flex items-center gap-3 mb-8">
-        <MessageCircle className="w-6 h-6 text-emerald-600" />
+        <MessageCircle className="w-6 h-6 text-blue-600" />
         <h2 className="text-3xl font-bold text-slate-900">
           Comments ({comments.length})
         </h2>
@@ -129,11 +129,11 @@ export function BlogComments({ postSlug }: BlogCommentsProps) {
             </h3>
 
             {submitted ? (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-center">
-                <p className="text-emerald-800 font-semibold mb-2">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-6 text-center">
+                <p className="text-blue-800 font-semibold mb-2">
                   Thank you for your comment!
                 </p>
-                <p className="text-emerald-700">
+                <p className="text-blue-700">
                   Your comment has been submitted and will appear after moderation.
                 </p>
               </div>
@@ -188,7 +188,7 @@ export function BlogComments({ postSlug }: BlogCommentsProps) {
                 <Button
                   type="submit"
                   disabled={submitting}
-                  className="bg-emerald-600 hover:bg-emerald-700 text-white"
+                  className="bg-blue-600 hover:bg-blue-700 text-white"
                 >
                   {submitting ? (
                     'Submitting...'

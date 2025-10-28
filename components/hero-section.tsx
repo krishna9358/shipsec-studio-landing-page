@@ -12,7 +12,7 @@ const Spline = dynamic(() => import("@splinetool/react-spline").then(m => m.defa
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden  bg-gradient-to-br from-slate-50 via-white to-emerald-50">
+    <section className="relative min-h-screen flex items-center overflow-hidden  bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <div className="absolute inset-0" style={{ width: '100%', height: '100%' }}>
         <Threads
           amplitude={1}
@@ -66,10 +66,14 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="flex flex-col sm:flex-row items-center sm:items-start justify-start gap-4"
             >
-              <Button size="lg" className="bg-blue-500 hover:bg-blue-800 text-white px-8 h-12 text-base">
-                Get Started for Free
+              <Button 
+                size="lg" 
+                className="bg-blue-500 hover:bg-blue-800 text-white px-8 h-12 text-base"
+                onClick={() => window.open('https://cal.com/aseem-shipsec', '_blank')}
+              >
+                Book a Demo
               </Button>
-              <Button size="lg" variant="outline" className="border-slate-700 text-slate-700 hover:bg-slate-800 hover:text-white px-8 h-12 text-base group">
+              <Button size="lg" variant="outline" className="border-slate-700 text-slate-700 hover:bg-slate-800 hover:text-white px-8 h-12 text-base group" onClick={() => window.open('https://github.com/shipsecai', '_blank')}>
                 <Github className="mr-2 w-5 h-5" />
                 Star on GitHub
               </Button>
@@ -82,13 +86,16 @@ export function HeroSection() {
               className="mt-12 flex items-center justify-start gap-8 text-sm text-slate-500"
             >
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                No credit card required
+
+                {/* <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" /> */}
+              {/* <div className="hidden sm:block">•</div> */}
+
+                30-minute demo
               </div>
               <div className="hidden sm:block">•</div>
-              <div className="hidden sm:block">Free tier available</div>
+              <div className="hidden sm:block">Live product walkthrough</div>
               <div className="hidden sm:block">•</div>
-              <div className="hidden sm:block">Deploy in minutes</div>
+              <div className="hidden sm:block">Q&A session</div>
             </motion.div>
           </motion.div>
 

@@ -38,7 +38,7 @@ export function Navbar() {
   ];
 
   return (
-    <Nav onVisibleChange={setVisible}>
+    <Nav onVisibleChange={setVisible} className="z-[9999]">
       {/* Desktop Navigation */}
       <NavBody>
         <div className="flex items-center gap-8">
