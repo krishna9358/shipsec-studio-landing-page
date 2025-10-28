@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import type { BlogPost } from '@/lib/blog';
 import { Calendar, Clock, User } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import Image from 'next/image';
 
 export function BlogPostClient({ post }: { post: BlogPost }) {
   return (
@@ -73,7 +74,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="aspect-video rounded-3xl overflow-hidden mb-12 border-2 border-slate-200 shadow-xl"
           >
-            <img
+            <Image
               src={post.coverImage}
               alt={post.title}
               className="w-full h-full object-cover"

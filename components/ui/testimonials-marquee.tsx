@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type Testimonial = {
   quote: string;
@@ -31,7 +32,7 @@ export function TestimonialsMarquee({
             className="w-[450px] shrink-0 rounded-3xl border border-white/10 bg-white/5 p-6 text-left backdrop-blur-sm"
           >
             <div className="mb-4 flex items-center gap-4">
-              <img
+              <Image
                 src={t.src}
                 alt={t.name}
                 className="h-12 w-12 shrink-0 rounded-full object-cover"

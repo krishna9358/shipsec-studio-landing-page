@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -82,7 +83,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
               }}
             >
               <div className="w-10 h-10 md:w-12 md:h-12">
-                <img
+                <Image
                   src="/logo-shipsec.png"
                   alt="ShipSecAI Logo"
                   className="w-full h-full object-contain"

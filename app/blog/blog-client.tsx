@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
 import type { BlogPost } from '@/lib/blog';
+import Image from 'next/image';
 
 export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
   return (
@@ -25,7 +26,7 @@ export function BlogPageClient({ posts }: { posts: BlogPost[] }) {
               {post.coverImage && (
                 <Link href={`/blog/${post.slug}`}>
                   <div className="aspect-video overflow-hidden bg-slate-100">
-                    <img
+                    <Image
                       src={post.coverImage}
                       alt={post.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

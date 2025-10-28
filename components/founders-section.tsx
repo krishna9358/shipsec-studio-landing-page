@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Linkedin, Github } from "lucide-react";
+import Image from "next/image";
 
 const founders = [
   {
@@ -53,7 +54,7 @@ export function FoundersSection() {
               className="bg-white rounded-2xl border border-slate-200 shadow-lg hover:shadow-2xl transition-all overflow-hidden group"
             >
               <div className="aspect-square overflow-hidden">
-                <img
+                <Image
                   src={founder.image}
                   alt={founder.name}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
